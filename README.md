@@ -14,13 +14,13 @@ Els continguts estan organitzats per nuclis formatius i segueixen el currículum
 
 ## Estructura del repositori
 
-📁 00-Introducció_SOX/     → Conceptes bàsics dels sistemes operatius en xarxa
+📁 [00-Introducció_SOX/](00-Introducció_SOX/)     → Conceptes bàsics dels sistemes operatius en xarxa
 
-📁 NF1_SOX_Linux/          → NF1: Administració de xarxes amb sistemes Linux
+📁 [NF1_SOX_Linux/](NF1_SOX_Linux/)          → NF1: Administració de xarxes amb sistemes Linux
 
-📁 NF2_SOX_Windows/        → NF2: Administració de xarxes amb sistemes Windows
+📁 [NF2_SOX_Windows/](NF2_SOX_Windows/)        → NF2: Administració de xarxes amb sistemes Windows
 
-📁 NF3_Integració_SOX/     → NF3: Integració de sistemes Linux i Windows en xarxa
+📁 [NF3_Integració_SOX/](NF3_Integració_SOX/)     → NF3: Integració de sistemes Linux i Windows en xarxa
 
 ---
 
