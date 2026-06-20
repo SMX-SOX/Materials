@@ -37,7 +37,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 
 **Recordeu** desmarcar "Proceed with Unattended Installation".
 
-> La "unantetended installation" és una instal·lació automatitzada que no requereix intervenció de l'usuari, ideal per a entorns de producció per automatitzar la tasca i reduir errors humans. 
+> La "unantetended installation" és una instal·lació automatitzada que no requereix intervenció de l'usuari, ideal per a entorns de producció per automatitzar la tasca i reduir errors humans.
 >
 >Tot i que en alguna activitat veurem com usar aquesta funcionalitat, en aquesta primera instal·lació la desactivarem per tal de poder veure tot el procés i entendre què passa a cada pas.
 
