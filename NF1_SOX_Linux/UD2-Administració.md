@@ -26,7 +26,7 @@ Per tant, quan s'instal·la un paquet, cal també assegurar-se que totes les sev
 
 | | Família Debian | Família SUSE | Família Red Hat |
 | :--- | :--- | :--- | :--- |
-| **Gestor d’alt nivell** | apt | zypper | dnf<br>(reemplaça yum) |
+| **Gestor d’alt nivell** | apt | zypper | dnf (reemplaça yum) |
 | **Gestor de baix nivell** | dpkg | rpm | rpm |
 
 #### Comandes apt bàsiques
