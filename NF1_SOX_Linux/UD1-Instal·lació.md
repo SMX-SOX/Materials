@@ -1,5 +1,11 @@
 # UD1. Instal·lació Ubuntu Server
 
+## Resultats d'aprenentatge
+
+RA1. Instal·la sistemes operatius en xarxa descrivint-ne les característiques i interpretant-ne la documentació tècnica.
+
+Durada prevista: 2 hores
+
 Partim de la ISO d'Ubuntu Server que teniu disponible a la xarxa de l'escola. Si voleu descarregar-la a casa, podeu fer-ho des del web oficial d'Ubuntu: [https://ubuntu.com/download/server](https://ubuntu.com/download/server).
 
 Com a hipervisor usarem VirtualBox, que ja teniu instal·lat als equips de classe.
@@ -35,3 +41,19 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 >
 >Tot i que en alguna activitat veurem com usar aquesta funcionalitat, en aquesta primera instal·lació la desactivarem per tal de poder veure tot el procés i entendre què passa a cada pas.
 
+- **Idioma**: trieu l'idioma que preferiu, tot i que el sistema els arxius de configuració i missatges d'error els tindrà en anglès.
+- **Distribució del teclat**: trieu la distribució coherent amb el vostre teclat. Si heu seleccionat "Català" com a idioma, el sistema us proposarà la distribució de teclat "Spanisth-Catalan".
+- **Tipus d'instal·lació**: trieu "Ubuntu Server". L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar aquestes eines manualment després de la instal·lació.
+- **Network configuration**: amb la tria inicial les dues interfícies haurien de mostrar una IP automàtica assignada pel servidor DHCP de VirtualBox.
+- **Configuració del disc**: trieu "Use an entire disk" i les opcions marcades per defecte. Un cop aparegui la pantalla de confirmació, feu clic a "Continua".
+- **Perfil usuari inicial i màquina**: useu com a nom d'usuari "usuari", com a nom de servidor "server" i com a contrasenya "usuari".
+- **Ubuntu Pro**: trieu "Skip for Now" per ara. En una activitat posterior veurem com registrar la màquina a Ubuntu Pro.
+- **SSH Configuration**: trieu "Install OpenSSH server" per poder accedir remotament a la màquina virtual, en el nostre cas des de l'amfitrió (host).
+
+Les següents pantalles no cal marcar res, ja que instal·larem sobre una VM i no volem instal·lar cap servei o paquet d'inici.
+
+Quan acabi la instal·lació, veureu una pantalla que us demanarà reiniciar el sistema. Feu clic a "Reinicia ara" i traieu la ISO del lector virtual de la màquina virtual prement "ENTER".
+
+Un cop reiniciat el sistema, tenim el nostre servidor llest per a ser usat.
+
+![Primer inici de sessió](media/02-installed.png)
