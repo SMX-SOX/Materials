@@ -1,7 +1,5 @@
 # UD1. Instal·lació Ubuntu Server
 
-## Resultats d'aprenentatge
-
 RA1. Instal·la sistemes operatius en xarxa descrivint-ne les característiques i interpretant-ne la documentació tècnica.
 
 Durada prevista: 2 hores
@@ -41,7 +39,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 >
 >Tot i que en alguna activitat veurem com usar aquesta funcionalitat, en aquesta primera instal·lació la desactivarem per tal de poder veure tot el procés i entendre què passa a cada pas.
 
-- **Idioma**: trieu l'idioma que preferiu, tot i que el sistema els arxius de configuració i missatges d'error els tindrà en anglès.
+- **Idioma**: trieu l'idioma que preferiu, serà l'idioma dels missatges del sistema, tot i que els arxius de configuració i els missatges d'error de la majoria dels serveis estaran en anglès.
 - **Distribució del teclat**: trieu la distribució coherent amb el vostre teclat. Si heu seleccionat "Català" com a idioma, el sistema us proposarà la distribució de teclat "Spanisth-Catalan".
 - **Tipus d'instal·lació**: trieu "Ubuntu Server". L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar aquestes eines manualment després de la instal·lació.
 - **Network configuration**: amb la tria inicial les dues interfícies haurien de mostrar una IP automàtica assignada pel servidor DHCP de VirtualBox.
