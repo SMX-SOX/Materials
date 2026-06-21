@@ -1,4 +1,4 @@
-# UD2. Administració bàsica servidor GNU/Linux
+# UD2. Configuració bàsica servidor GNU/Linux
 
 RA1. Instal·la sistemes operatius en xarxa descrivint-ne les característiques i interpretant-ne la documentació tècnica.
 
@@ -234,19 +234,3 @@ Als sistemes GNU/Linux, les configuracions solen fer a través de fitxers de tex
 - `/etc/shadow`: Conté informació sobre les contrasenyes dels usuaris, com la contrasenya xifrada, la data de l'últim canvi de contrasenya i les polítiques de caducitat de la contrasenya.
 
 A més, quan instal·lem serveis addicionals, aquests solen crear els seus propis fitxers de configuració dins del directori `/etc/`, amb el nom del servei o aplicació. Per exemple, si instal·lem el servidor web Apache, es crearan fitxers de configuració dins del directori `/etc/apache2/`.
-
-## Serveis o dimonis
-
-Els serveis o dimonis són aplicacions que funcionen en segon pla i que gestionen serveis com la xarxa o d’altres que anirem treballant al cicle com un servidor web. Els serveis es gestionen mitjançant el sistema d'inicialització que a Ubuntu com a la majoria de distribucions modernes és **systemd**. Aquest sistema permet iniciar, aturar i gestionar serveis de manera eficient.
-
-La gestió bàsica dels serveis amb systemd es realitza amb la comanda `systemctl`, que permet controlar l'estat dels serveis, habilitar-los o deshabilitar-los per iniciar-se automàticament en arrencar el sistema, i veure els registres d'activitat dels serveis:
-
-- `systemctl start nomdelservei`: inicia el servei especificat.
-- `systemctl stop nomdelservei`: atura el servei especificat.
-- `systemctl restart nomdelservei`: reinicia el servei especificat.
-- `systemctl status nomdelservei`: mostra l'estat actual del servei, inclo informació sobre si està actiu, inactiu o fallant, així com els registres recents del servei.
-- `systemctl enable nomdelservei`: habilita el servei perquè s'iniciï automàticament en arrencar el sistema. Si li afegim l'opció `--now`, el servei s'iniciarà immediatament després d'habilitar-lo.
-- `systemctl disable nomdelservei`: deshabilita el servei perquè no s'iniciï automàticament en arrencar el sistema. Si li afegim l'opció `--now`, el servei s'aturarà immediatament després de deshabilitar-lo.
-- `systemctl reload nomdelservei`: recarrega la configuració del servei sense aturar-lo, útil quan s'han fet canvis en els fitxers de configuració del servei.
-
-Cada servei (unitat) té associat un fitxer on es determina com s’ha de gestionar. Nosaltres podem crear els nostres propis fitxers de configuració per a serveis personalitzats, però cal tenir en compte que aquests fitxers han de seguir una estructura específica i han de ser col·locats al directori `/etc/systemd/system/` per tal que systemd els reconegui.
