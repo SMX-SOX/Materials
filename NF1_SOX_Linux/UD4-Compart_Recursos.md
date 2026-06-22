@@ -1,5 +1,11 @@
 # UD4-Compartició de recursos
 
+RA4. Gestiona els recursos compartits del sistema, interpretant especificacions i determinant nivells de seguretat.
+
+Durada prevista: 12 hores
+
+## Introducció a la unitat
+
 La compartició de recursos en xarxa és una de les utilitats o raons principals perquè els sistemes operatius es connectin en xarxa.
 
 Els poden compartir en xarxa tots tipus de recursos, encara que els recursos més habituals són:
@@ -105,54 +111,6 @@ chmod 755 fitxer
 chmod -R 775 carpeta
 ```
 
-### Instal·lació i configuració d'un escenari bàsic de NFS
-
-1. Com a pas previ, haurem creat dos grups d'usuaris `alumnes` i `professors`, i agreguem almenys un usuari a cada grup. Això haurem de fer-ho tant al servidor com al client, assegurant-nos que els UID i GID coincideixin entre tots els sistemes per garantir un accés correcte als recursos compartits.
-
-```bash
-# Crear grups d'usuaris
-sudo groupadd -g 2000 alumnes
-sudo groupadd -g 2001 professors
-```
-
-2. El primer pas serà la instal·lació del paquet `nfs-kernel-server` al servidor NFS.
-
-3. El segon pas serà crear l'estructura de carpetes, aquí crearem una carpeta anomenada `nfs` a la ruta `/srv` que és on es solen ubicar els recursos compartits a Linux. Com no volem que les carpetes que es crean a partir d'aquest directori arrosseguin permisos heretats, establirem els permisos d'aquest directori a 777, i la propietat a `nobody:nogroup`.
-
-```bash
-sudo mkdir -p /srv/nfs
-sudo chown nobody:nogroup /srv/nfs
-sudo chmod 777 /srv/nfs
-```
-
-4. Crearem la carpeta que volem exportar, per exemple, l'anonemada `recurs`, i establirem els permisos d'accés que considerem oportuns, per exemple, 750 amb propietat de root i grup alumnes.
-
-```bash
-sudo mkdir -p /srv/nfs/recurs
-sudo chown root:alumnes /srv/nfs/recurs
-sudo chmod 750 /srv/nfs/recurs
-```
-
-5. Al servidor cal exportar la carpeta que volem compartir, per això editarem el fitxer de configuració de NFS `/etc/exports` i afegirem una línia com la següent:
-
-```bash
-/var/nfs/recurs *(rw,sync,no_subtree_check)
-```
-
-6. Un cop editat el fitxer de configuració, cal reiniciar el servei NFS per aplicar els canvis:
-
-```bash
-sudo systemctl restart nfs-kernel-server
-```
-
-7. Al client, cal muntar el recurs compartit per poder accedir-hi. Per això, podem utilitzar la comanda `mount` de la següent manera:
-
-```bash
-sudo mount -t nfs servidor:/var/nfs/recurs /mnt/nfs/recurs
-```
-
-Amb aquesta comanda, estem muntant el recurs compartit del servidor NFS a la ruta `/mnt/nfs/recurs` del client. Un cop muntat, podrem accedir al recurs compartit com si fos un directori local.
-
 ### Permisos d'accés a recursos compartits NFS
 
 Per defecte, NFS no valida els usuaris, sinó que confia en el sistema de permisos del sistema de fitxers local. Això significa que els permisos d'accés als fitxers i directoris compartits a través de NFS es basen en els permisos establerts al sistema de fitxers del servidor NFS usant el UID i el GID definits a la propietat del fitxer o directori. Per tant, és important assegurar-se que els usuaris i grups tinguin els mateixos UID i GID tant al servidor com als clients NFS per garantir un accés correcte.
@@ -186,3 +144,124 @@ Com el que importa és el UID i GID, i no el nom d'usuari, els permisos d'accés
 És per aquest motiu que NFS en entorns corporatius requereix un sistema d'usuaris centralitzat, com ara LDAP o Active Directory, per garantir que els UID i GID siguin coherents a través de tots els sistemes que accedeixen als recursos compartits.
 
 Per entorns més petits, pot ser suficient assegurar-se que els UID i GID coincideixin manualment entre el servidor i els clients NFS, per exemple usant scripts per automatitzar la creació d'usuaris i grups amb els mateixos UID i GID a tots els sistemes.
+
+### Instal·lació i configuració d'un servidor NFS
+
+#### Preparació de l'entorn
+
+Per aquest laboratori, necessitarem un servidor NFS (Ubuntu Server) i un client NFS (Zorin OS), totes es dues es veuran per la interfície comuna (xarxa NAT o adaptador pont segons sigui el cas).
+
+Abans de començar amb els escenaris, cal instal·lar els paquets necessaris i assegurar-nos que les màquines es comuniquen.
+
+**Al servidor**
+
+```bash
+# Instal·lar el servidor NFS
+sudo apt update
+sudo apt install nfs-kernel-server -y
+```
+
+**Al client**
+
+```bash
+# Instal·lar el client NFS
+sudo apt update
+sudo apt install nfs-common -y
+```
+
+#### Escenari 1: Compartició bàsica d'una carpeta
+
+Compartim una carpeta per un usuari i grup concret.
+
+**Al servidor**
+
+Creació de l'usuari, el grup i la carpeta compartida amb els permisos adequats:
+
+```bash
+#Creem el grup i l'usuari que serà propietari del recurs:
+sudo groupadd -g 1100 grup_smx
+sudo useradd -u 1100 -m -g grup_smx usuari_smx
+
+# Crear una carpeta per compartir
+sudo mkdir -p /srv/nfs/compartit
+# Canviar propietari i grup de la carpeta
+sudo chown joan:users /srv/nfs/compartit
+# Establir permisos d'accés a la carpeta
+sudo chmod 750 /srv/nfs/compartit
+```
+
+Editem l'arxiu `/etc/exports` per definir els recursos compartits i els permisos d'accés:
+
+```plain
+/srv/nfs/basica *(rw,sync,no_subtree_check)
+```
+
+Apliquem els canvis i reiniciem el servei NFS:
+
+```bash
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+```
+
+**Al client**
+
+Cal crear l'usuari i el grup amb els mateixos UID i GID que al servidor per assegurar la coherència dels permisos:
+
+```bash
+#Creem el grup i l'usuari que serà propietari del recurs:
+sudo groupadd -g 1100 grup_smx
+sudo useradd -u 1100 -m -g grup_smx usuari_smx -s /bin/bash
+```
+
+Cal crea el punt de muntatge i muntar la carpeta compartida:
+
+```bash
+# Crear el punt de muntatge
+sudo mkdir -p /mnt/compartit
+# Muntar la carpeta compartida
+sudo mount servidor_nfs:/srv/nfs/compartit /mnt/compartit
+```
+
+Comprovem que l'usuari creatpot accedir a la carpeta compartida i crear fitxers dins d'ella:
+
+```bash
+# Canviem a l'usuari creat
+su - usuari_smx
+# Comprovar accés a la carpeta compartida
+cd /mnt/compartit
+# Crear un fitxer de prova
+touch fitxer_prova.txt
+# Comprovar que el fitxer s'ha creat correctament
+ls -l fitxer_prova.txt
+```
+
+Un cop accedit, desmuntem la carpeta compartida:
+
+```bash
+# Desmuntar la carpeta compartida
+sudo umount /mnt/compartit
+```
+
+Aquí hem vist un muntatge temporal de la carpeta compartida. Si volem que el muntatge sigui permanent, cal afegir una entrada a l'arxiu `/etc/fstab` del client:
+
+```plain
+servidor_nfs:/srv/nfs/compartit /mnt/compartit nfs defaults 0 0
+```
+
+Un cop editat l'arxiu, podem muntar totes les entrades de `/etc/fstab` amb la comanda:
+
+```bash
+sudo mount -a
+```
+
+Si ara iniceu sessió amb l'usuari creat a Zorin OS, podreu accedir a la carpeta compartida de manera automàtica.
+
+#### Escenari 2: Compartició amb permisos avançats (ACLs)
+
+Tot i que el model de permisos UGO és suficient per a molts casos, en entorns més complexos pot ser necessari utilitzar ACLs (Access Control Lists) per definir permisos més detallats i específics per a usuaris i grups. Per exemple, si volem que un grup tingui accés de lectura i escriptura a una carpeta compartida, mentre que un altre grup només tingui accés de lectura, podem utilitzar ACLs per aconseguir-ho.
+
+El primer pas serà instal·lar el paquet `acl` al servidor per disposar de les comandes `getfacl` i `setfacl` al cl:
+
+```bash
+sudo apt install acl -y
+```
