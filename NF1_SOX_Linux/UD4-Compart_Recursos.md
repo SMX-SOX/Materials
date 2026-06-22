@@ -105,10 +105,53 @@ chmod 755 fitxer
 chmod -R 775 carpeta
 ```
 
-### Instal·lació i configuració de NFS
+### Instal·lació i configuració d'un escenari bàsic de NFS
 
-1. El primer pas serà la instal·lació del paquet `nfs-kernel-server` al servidor NFS.
-2.
+1. Com a pas previ, haurem creat dos grups d'usuaris `alumnes` i `professors`, i agreguem almenys un usuari a cada grup. Això haurem de fer-ho tant al servidor com al client, assegurant-nos que els UID i GID coincideixin entre tots els sistemes per garantir un accés correcte als recursos compartits.
+
+```bash
+# Crear grups d'usuaris
+sudo groupadd -g 2000 alumnes
+sudo groupadd -g 2001 professors
+```
+
+2. El primer pas serà la instal·lació del paquet `nfs-kernel-server` al servidor NFS.
+
+3. El segon pas serà crear l'estructura de carpetes, aquí crearem una carpeta anomenada `nfs` a la ruta `/srv` que és on es solen ubicar els recursos compartits a Linux. Com no volem que les carpetes que es crean a partir d'aquest directori arrosseguin permisos heretats, establirem els permisos d'aquest directori a 777, i la propietat a `nobody:nogroup`.
+
+```bash
+sudo mkdir -p /srv/nfs
+sudo chown nobody:nogroup /srv/nfs
+sudo chmod 777 /srv/nfs
+```
+
+4. Crearem la carpeta que volem exportar, per exemple, l'anonemada `recurs`, i establirem els permisos d'accés que considerem oportuns, per exemple, 750 amb propietat de root i grup alumnes.
+
+```bash
+sudo mkdir -p /srv/nfs/recurs
+sudo chown root:alumnes /srv/nfs/recurs
+sudo chmod 750 /srv/nfs/recurs
+```
+
+5. Al servidor cal exportar la carpeta que volem compartir, per això editarem el fitxer de configuració de NFS `/etc/exports` i afegirem una línia com la següent:
+
+```bash
+/var/nfs/recurs *(rw,sync,no_subtree_check)
+```
+
+6. Un cop editat el fitxer de configuració, cal reiniciar el servei NFS per aplicar els canvis:
+
+```bash
+sudo systemctl restart nfs-kernel-server
+```
+
+7. Al client, cal muntar el recurs compartit per poder accedir-hi. Per això, podem utilitzar la comanda `mount` de la següent manera:
+
+```bash
+sudo mount -t nfs servidor:/var/nfs/recurs /mnt/nfs/recurs
+```
+
+Amb aquesta comanda, estem muntant el recurs compartit del servidor NFS a la ruta `/mnt/nfs/recurs` del client. Un cop muntat, podrem accedir al recurs compartit com si fos un directori local.
 
 ### Permisos d'accés a recursos compartits NFS
 
@@ -118,18 +161,28 @@ Posem el següent exemple per il·lustrar millor:
 
 Al servidor NFS tenim definits els següents usuaris (UID i GID):
 
-| Usuari | UID  | GID  |
-|--------|----- |----- |
-| joan   | 1001 | 1001 |
-| bob    | 1002 | 1002 |
-| maria  | 1003 | 1003 |
-| pep    | 1004 | 1310 |
+| Usuari | UID  | GID          |
+|--------|----- |-----         |
+| joan   | 1001 | 1001 (joan)  |
+| bob    | 1002 | 1310 (users) |
+| pep    | 1004 | 1310 (pep)   |
 
 A una màquina client els usuaris definits són:
 
-| Usuari | UID  | GID  |
-|--------|----- |----- |
-| pep    | 1001 | 1001 |
-| joan   | 1002 | 1310 |
+| Usuari | UID  | GID          |
+|--------|----- |------------  |
+| pep    | 1001 | 1001 (pep)   |
+| joan   | 1002 | 1310 (users) |
 
-Suposem una carpeta anomenada `recurs` amb propietat de user amb permisos 750. Quin tipus d’accés tindran els usuaris d’un host al que s’ha compartit el recurs com rw?
+Suposem una carpeta anomenada `recurs` amb propietat de joan i grup 1310 amb permisos 750. Quin tipus d’accés tindran els usuaris d’un host al que s’ha compartit el recurs com rw?
+
+Com el que importa és el UID i GID, i no el nom d'usuari, els permisos d'accés es determinaran en funció dels UID i GID associats a cada usuari. En aquest cas:
+
+|Accés  | Servidor NFS    | Client NFS       |
+|-------|--------------   |------------      |
+| RW    | 1001 (joan)     | 1001 (pep)       |
+| RO    | 1002 (bob)      | 1310 (joan)      |
+
+És per aquest motiu que NFS en entorns corporatius requereix un sistema d'usuaris centralitzat, com ara LDAP o Active Directory, per garantir que els UID i GID siguin coherents a través de tots els sistemes que accedeixen als recursos compartits.
+
+Per entorns més petits, pot ser suficient assegurar-se que els UID i GID coincideixin manualment entre el servidor i els clients NFS, per exemple usant scripts per automatitzar la creació d'usuaris i grups amb els mateixos UID i GID a tots els sistemes.
