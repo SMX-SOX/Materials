@@ -1,33 +1,10 @@
-# UD4-Compartició de recursos
-
-RA4. Gestiona els recursos compartits del sistema, interpretant especificacions i determinant nivells de seguretat.
-
-Durada prevista: 12 hores
-
-## Introducció a la unitat
-
-La compartició de recursos en xarxa és una de les utilitats o raons principals perquè els sistemes operatius es connectin en xarxa.
-
-Els poden compartir en xarxa tots tipus de recursos, encara que els recursos més habituals són:
-
-- Arxius i carpetes
-- Impressores
-
-Quins avantages té la compartició de recursos?
-
-- **Estalvi de costos**: No cal comprar una impressora per a cada usuari, sinó que es pot compartir una sola impressora entre diversos usuaris. De la mateixa manera, es poden compartir arxius i carpetes entre diversos usuaris sense necessitat de duplicar-los, amb el corresponent estalvi en dispostius d'emmagatzematge.
-
-- **Facilitat d'accés**: Els usuaris poden accedir als recursos compartits des de qualsevol lloc de la xarxa, sense necessitat de desplaçar-se físicament fins al dispositiu que conté el recurs.
-
-- **Facilitat de gestió i seguretat**: La gestió dels recursos compartits és més senzilla i segura, ja que es poden controlar els permisos d'accés i les configuracions des d'un únic punt de gestió. A més evitem el problema de la **inconsistència de dades**, ja que només hi ha una còpia del recurs compartit, i tots els usuaris accedeixen a la mateixa versió.
-
-## Compartició d'arxius i carpetes
+# Compartició d'arxius i carpetes
 
 Als sistemes *nix*, com Linux, la compartició d'arxius i carpetes es pot realitzar mitjançant diversos protocols, com ara `NFS` (Network File System) o `Samba` (SMB/CIFS). Mentre que el primer és natiu del món Unix, el segon va néixer per oferir compatibilitat amb sistemes Windows.
 
 En aquesta unitat estudiarem el protocol `NFS`, deixant Samba per més endanvant, quan veiem la integració de Linux amb Windows.
 
-### Què és NFS?
+## Què és NFS?
 
 NFS (Network File System) és un protocol de compartició de fitxers que permet als usuaris accedir a fitxers i directoris en un servidor remot com si fossin locals. Malgrat el seu nom, no és un sistema de fitxers en si mateix, sinó un protocol que permet muntar sistemes de fitxers remots a la màquina local.
 
@@ -72,7 +49,7 @@ Les opcions més utilitzades es classifiquen segons la seva funció:
     - 192.168.1.0/24(rw,sync): Atorga accés a tota una xarxa.
     - \*(rw,sync): L'asterisc \* permet que qualsevol client accedeixi al recurs.
 
-### Recordatori sistema permisos UGO
+## Recordatori sistema permisos UGO
 
 Als sistemes Unix, els permisos d'accés als fitxers i directoris es gestionen mitjançant un model de permisos conegut com a UGO (User, Group, Others). Aquest model defineix tres tipus d'usuaris:
 
@@ -136,7 +113,7 @@ chmod 755 fitxer
 chmod -R 775 carpeta
 ```
 
-### Permisos d'accés a recursos compartits NFS
+## Permisos d'accés a recursos compartits NFS
 
 Per defecte, NFS no valida els usuaris, sinó que confia en el sistema de permisos del sistema de fitxers local. Això significa que els permisos d'accés als fitxers i directoris compartits a través de NFS es basen en els permisos establerts al sistema de fitxers del servidor NFS usant el UID i el GID definits a la propietat del fitxer o directori. Per tant, és important assegurar-se que els usuaris i grups tinguin els mateixos UID i GID tant al servidor com als clients NFS per garantir un accés correcte.
 
@@ -170,15 +147,15 @@ Com el que importa és el UID i GID, i no el nom d'usuari, els permisos d'accés
 
 Per entorns més petits, pot ser suficient assegurar-se que els UID i GID coincideixin manualment entre el servidor i els clients NFS, per exemple usant scripts per automatitzar la creació d'usuaris i grups amb els mateixos UID i GID a tots els sistemes.
 
-### Instal·lació i configuració d'un servidor NFS
+## Instal·lació i configuració d'un servidor NFS
 
-#### Preparació de l'entorn
+### Preparació de l'entorn
 
 Per aquest laboratori, necessitarem un servidor NFS (Ubuntu Server) i un client NFS (Zorin OS), totes es dues es veuran per la interfície comuna (xarxa NAT o adaptador pont segons sigui el cas).
 
 Abans de començar amb els escenaris, cal instal·lar els paquets necessaris i assegurar-nos que les màquines es comuniquen.
 
-##### Instal·lació servei NFS
+#### Instal·lació servei NFS
 
 ```bash
 # Instal·lar el servidor NFS
@@ -186,7 +163,7 @@ sudo apt update
 sudo apt install nfs-kernel-server -y
 ```
 
-##### Instal·lació client NFS
+#### Instal·lació client NFS
 
 ```bash
 # Instal·lar el client NFS
@@ -272,6 +249,14 @@ Aquí hem vist un muntatge temporal de la carpeta compartida (si tanqueu sessió
 ```plain
 IP_servidor_nfs:/srv/nfs/compartit /mnt/compartit nfs defaults 0 0
 ```
+
+> **Explicació de l'entrada:**
+> Ruta del recurs compartit al servidor inclou la IP i la ruta absoluta.
+> Ruta del punt de muntatge al client.
+> Tipus de sistema de fitxers (nfs).
+> Opcions de muntatge (defaults).
+> 0 per a la verificació del sistema de fitxers (no es comprovarà).
+> 0 per a l'ordre de muntatge (no es muntarà en ordre específic).
 
 Un cop editat l'arxiu, podem muntar totes les entrades de `/etc/fstab` amb la comanda:
 
