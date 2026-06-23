@@ -267,3 +267,7 @@ sudo mount -a
 ```
 
 Si ara iniceu sessió amb l'usuari creat a Zorin OS, podreu accedir a la carpeta compartida de manera automàtica.
+
+## Enllaços d'interès
+
+- [LinuxConfig.org: How to Setup NFS Server and Client on Ubuntu 26.04](https://linuxconfig.org/how-to-setup-nfs-server-and-client-on-ubuntu-26-04)
