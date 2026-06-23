@@ -47,6 +47,31 @@ Pel que fa les versions, les dues que s'usen a l'actualitat són:
 
 - **NFSv4**: És la versió més recent i completa, que ofereix millors funcionalitats de seguretat, com ara autenticació, les llistes de control d'accés (ACLs) i xifrat.
 
+Les opcions d'exportació de NFS es configuren al fitxer /etc/exports per definir els permisos i les restriccions dels directoris compartits. Cada directori es defineix amb la sintaxi: `directori client(opcions)`
+
+Les opcions més utilitzades es classifiquen segons la seva funció:
+
+1. **Permisos de Lectura/Escriptura**
+
+    - rw (Read/Write): Permet operacions tant de lectura com d'escriptura en el volum.
+    - ro (Read-Only): Atorga accés de només lectura (és l'opció predeterminada).
+
+2. **Rendiment vs. Seguretat de dades**
+    - sync: Força el servidor a esperar que els canvis s'escriguin al disc físic abes de respondre al client. Garanteix la integritat de les dades en cas de caigudes sobtades del servidor.
+    - async: Permet al servidor respondre a les sol·licituds abans que els canvis s'escriguin a l'emmagatzematge estable. Millora el rendiment, però augmenta el risc de pèrdua de dades si hi ha fallades inesperades.
+
+3. **Mapeig d'Usuaris (User Squashing)**
+
+    - root_squash: És l'opció predeterminada. Si un usuari root accedeix al recurs compartit des d'un client, el servidor el degrada i li assigna l'ID d'un usuari anònim (ex. nfsnobody). Això evita que el root remot tingui accés total als fitxers.
+    - no_root_squash: Desactiva la degradació, permetent que l'usuari root del client mantingui privilegis de superusuari al servidor. Fes-la servir amb precaució, ja que presenta un risc de seguretat elevat.
+    - all_squash: Mapeja tots els usuaris (independentment del seu UID) a l'usuari anònim. És ideal per a directorios compartits públics.
+
+4. **Accessos i Xarxes**
+    Permet definir hosts específics, subxarxes o dominis. Exemples:
+    - 192.168.1.10(rw,sync): Dóna accés només a una IP específica.
+    - 192.168.1.0/24(rw,sync): Atorga accés a tota una xarxa.
+    - \*(rw,sync): L'asterisc \* permet que qualsevol client accedeixi al recurs.
+
 ### Recordatori sistema permisos UGO
 
 Als sistemes Unix, els permisos d'accés als fitxers i directoris es gestionen mitjançant un model de permisos conegut com a UGO (User, Group, Others). Aquest model defineix tres tipus d'usuaris:
@@ -219,7 +244,7 @@ Cal crea el punt de muntatge i muntar la carpeta compartida:
 # Crear el punt de muntatge
 sudo mkdir -p /mnt/compartit
 # Muntar la carpeta compartida
-sudo mount servidor_nfs:/srv/nfs/compartit /mnt/compartit
+sudo mount -t nfs servidor_nfs:/srv/nfs/compartit /mnt/compartit
 ```
 
 Comprovem que l'usuari creatpot accedir a la carpeta compartida i crear fitxers dins d'ella:
@@ -242,10 +267,10 @@ Un cop accedit, desmuntem la carpeta compartida:
 sudo umount /mnt/compartit
 ```
 
-Aquí hem vist un muntatge temporal de la carpeta compartida. Si volem que el muntatge sigui permanent, cal afegir una entrada a l'arxiu `/etc/fstab` del client:
+Aquí hem vist un muntatge temporal de la carpeta compartida (si tanqueu sessió es perd el muntatge). Si volem que el muntatge sigui permanent i automàtic, cal afegir una entrada a l'arxiu `/etc/fstab` del client:
 
 ```plain
-servidor_nfs:/srv/nfs/compartit /mnt/compartit nfs defaults 0 0
+IP_servidor_nfs:/srv/nfs/compartit /mnt/compartit nfs defaults 0 0
 ```
 
 Un cop editat l'arxiu, podem muntar totes les entrades de `/etc/fstab` amb la comanda:
@@ -260,8 +285,68 @@ Si ara iniceu sessió amb l'usuari creat a Zorin OS, podreu accedir a la carpeta
 
 Tot i que el model de permisos UGO és suficient per a molts casos, en entorns més complexos pot ser necessari utilitzar ACLs (Access Control Lists) per definir permisos més detallats i específics per a usuaris i grups. Per exemple, si volem que un grup tingui accés de lectura i escriptura a una carpeta compartida, mentre que un altre grup només tingui accés de lectura, podem utilitzar ACLs per aconseguir-ho.
 
-El primer pas serà instal·lar el paquet `acl` al servidor per disposar de les comandes `getfacl` i `setfacl` al cl:
+El primer pas serà instal·lar el paquet `acl` al servidor per disposar de les comandes `getfacl` i `setfacl` (el sistema d'arxius ext4 ja suporta ACLs de manera nativa, però cal tenir el paquet instal·lat per gestionar-les). Si instal·lem el paquet al client tambe, podrem comprovar els permisos ACL del recurs compartit:
 
 ```bash
 sudo apt install acl -y
 ```
+
+El següent pas serà crear els dos grups tant al **client com al servidor**, assegurant-nos que tinguin els mateixos GID:
+
+```bash
+# Crear grups al servidor i client
+sudo groupadd -g 2000 professors
+sudo groupadd -g 2001 alumnes
+```
+
+Crearem al **client** un usuari per a cadascun dels dos grups:
+
+```bash
+# Crear usuaris al client
+sudo useradd -m -G professors profe1
+sudo useradd -m -G alumnes alumne1
+```
+
+**Al servidor**
+
+Crearem el recurs que es vol compartir i assignem els permisos corresponents:
+
+```bash
+# Crear la carpeta compartida
+sudo mkdir -p /srv/nfs/compartit_acl
+# Crearem un fitxer de prova dins la carpeta compartida
+sudo touch /srv/nfs/compartit_acl/fitxer_prova.txt
+# Assignació ACLs per a professors i alumnes per recursos existents
+sudo setfacl -m g:professors:rwx /srv/nfs/compartit_acl
+sudo setfacl -m g:alumnes:rx /srv/nfs/compartit_acl
+# Afegim permisos per a nous fitxers i directoris creats dins la carpeta compartida
+sudo setfacl -d -m g:professors:rwx /srv/nfs/compartit_acl
+sudo setfacl -d -m g:alumnes:rx /srv/nfs/compartit_acl
+```
+
+**Verifiquem** que els permisos ACLs s'han aplicat correctament amb la comanda `getfacl`:
+
+```bash
+# Comprovar permisos ACLs
+getfacl /srv/nfs/compartit_acl
+```
+
+A continuació, editarem l'arxiu `/etc/exports` per compartir la carpeta amb els permisos adequats:
+
+```plain
+/srv/nfs/compartit_acl *(rw,sync,no_subtree_check)
+```
+
+Finalment, apliquem els canvis i reiniciem el servei NFS:
+
+```bash
+sudo exportfs -a
+sudo systemctl restart nfs-kernel-server
+```
+
+**Al client**
+
+Igual que a l'escenari anterior, el primer pas serà crear el punt de muntatge i a continuació,configurar el muntatge a `/etc/fstab` per a un muntatge automàtic.
+
+Comprova iniciant sessió tant com l'usuari `profe1` com amb l'usuari `alumne1` que els permisos ACLs s'apliquen correctament, permetent a `profe1` crear i modificar fitxers dins de la carpeta compartida, mentre que `alumne1` només pot llegir-los.
+
