@@ -13,7 +13,7 @@ Aquest nucli formatiu cobreix els fonaments dels sistemes operatius Linux, inclo
 3. [**UD3 - Usuaris i Grups**](UD3-Usuaris_Grups.md)
    - Gestió d'usuaris, grups i permisos
 
-4. [**UD4 - Compartició de Recursos**](UD4-Compart_Recursos.md) RA4 12h
+4. [**UD4 - Compartició de Recursos**](./UD4_Compart_Recursos/README.md) RA4 12h
    - Configuració i gestió de recursos compartits
 
 5. [**UD5 - Administració Avançada**](UD5-Gestio_Avançada.md) RA5 8h
