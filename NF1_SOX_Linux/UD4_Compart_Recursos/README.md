@@ -19,5 +19,8 @@ Quins avantages té la compartició de recursos?
 
 - **Facilitat d'accés**: Els usuaris poden accedir als recursos compartits des de qualsevol lloc de la xarxa, sense necessitat de desplaçar-se físicament fins al dispositiu que conté el recurs.
 
-- **Facilitat de gestió i seguretat**: La gestió dels recursos compartits és més senzilla i segura, ja que es poden controlar els permisos d'accés i les configuracions des d'un únic punt de gestió. A més evitem el problema de la **inconsistència de dades**, ja que només hi ha una còpia del recurs compartit, i tots els usuaris accedeixen a la mateixa versió.
+- **Facilitat de gestió i seguretat**: La gestió dels recursos compartits és més senzilla i segura, ja que es poden controlar els permisos d'accés i les configuracions des d'un únic punt de gestió.
 
+- **Consistència de dades**, ja que només hi ha una còpia del recurs compartit, i tots els usuaris accedeixen a la mateixa versió. En un entorn amb múltiples còpies d'un mateix recurs, és fàcil que es produeixin inconsistències i conflictes entre les diferents versions.
+
+En aquesta unitat veurem com compartir carpetes mitjançant el protocol NFS i impressores mitjançant CUPS. Quan veiem la integració de Linux amb Windows, veurem com compartir carpetes i impressores mitjançant Samba.

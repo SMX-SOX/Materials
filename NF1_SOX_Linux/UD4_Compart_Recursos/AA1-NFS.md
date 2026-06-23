@@ -147,6 +147,8 @@ Com el que importa és el UID i GID, i no el nom d'usuari, els permisos d'accés
 
 Per entorns més petits, pot ser suficient assegurar-se que els UID i GID coincideixin manualment entre el servidor i els clients NFS, per exemple usant scripts per automatitzar la creació d'usuaris i grups amb els mateixos UID i GID a tots els sistemes.
 
+En qualsevol cas, fixeu-vos que si necessiteu donar permisos diferents a diferents grups, el sistema UGO no és suficient, i caldrà usar ACLs (Access Control Lists) per establir permisos més detallats.
+
 ## Instal·lació i configuració d'un servidor NFS
 
 ### Preparació de l'entorn
