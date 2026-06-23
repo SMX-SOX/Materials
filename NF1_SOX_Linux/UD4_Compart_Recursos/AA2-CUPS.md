@@ -82,6 +82,8 @@ Ara ja podem afegir una impressora, en aquest cas una impressora virtual (PDF) q
 
 ![Impressora virtual PDF II](./images/cups-pdf-2.png)
 
+![Impressora virtual PDF III](./images/cups-pdf-3.png)
+
 Des del client (Zorin OS o Ubuntu Desktop) podem afegir la impressora compartida des del servidor CUPS. Obrim la configuració d'impressores i busquem la impressora compartida a la xarxa. Un cop trobada, l'afegim i comprovem que podem imprimir correctament.
 
 ![Afegir impressora compartida](./images/cups-add.png)
