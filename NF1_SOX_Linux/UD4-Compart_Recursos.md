@@ -178,7 +178,7 @@ Per aquest laboratori, necessitarem un servidor NFS (Ubuntu Server) i un client 
 
 Abans de començar amb els escenaris, cal instal·lar els paquets necessaris i assegurar-nos que les màquines es comuniquen.
 
-**Al servidor**
+##### Instal·lació servei NFS
 
 ```bash
 # Instal·lar el servidor NFS
@@ -186,7 +186,7 @@ sudo apt update
 sudo apt install nfs-kernel-server -y
 ```
 
-**Al client**
+##### Instal·lació client NFS
 
 ```bash
 # Instal·lar el client NFS
@@ -194,11 +194,11 @@ sudo apt update
 sudo apt install nfs-common -y
 ```
 
-#### Escenari 1: Compartició bàsica d'una carpeta
+#### Exemple senzill: Compartició bàsica d'una carpeta
 
 Compartim una carpeta per un usuari i grup concret.
 
-**Al servidor**
+##### Configuració al servidor
 
 Creació de l'usuari, el grup i la carpeta compartida amb els permisos adequats:
 
@@ -228,7 +228,7 @@ sudo exportfs -a
 sudo systemctl restart nfs-kernel-server
 ```
 
-**Al client**
+##### Configuració al client
 
 Cal crear l'usuari i el grup amb els mateixos UID i GID que al servidor per assegurar la coherència dels permisos:
 
