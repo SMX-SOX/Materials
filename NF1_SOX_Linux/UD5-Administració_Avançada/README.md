@@ -25,12 +25,18 @@ Poden classificar-se en dues categories:
 - **Generals**: Són aplicacions que permeten administrar el servidor Linux, permetent monitoritzar recursos, gestionar els logs i en funció de l'eina administrar els diferents serveis instal·lats. Exemples: Webmin, Cockpit, Ajenti o Plesk. Incorporen fins i tot un terminal per executar les comandes remotament.
 
 ![webmin](./img/webmin.png)
+<p style="text-align: center;">Panel principal de Webmin</p>
+
 ![cockpit](./img/cockpit.png)
+<p style="text-align: center;">Panel principal de Cockpit</p>
 
 - **Específiques**: En aquest cas, parlem d'aplicacions específiques que permeten gestionar un servei concret, com ara un servidor web, un servidor de correu o un servidor de bases de dades. Exemples: phpMyAdmin (per a bases de dades MySQL), Adminer (per a bases de dades SQL), phpLDAPadmin (per a directoris LDAP), Plesk (per a servidors web), etc.
 
 ![phpMyAdmin](./img/phpmyadmin.png)
+<p style="text-align: center;">Imatge de phpMyAdmin</p>
+
 ![JXplorer](./img/jxplorer.png)
+<p style="text-align: center;">Panel principal de JXplorer</p>
 
 ## Monitorització del servidor
 
