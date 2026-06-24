@@ -4,22 +4,22 @@ Aquest nucli formatiu cobreix els fonaments dels sistemes operatius Linux, inclo
 
 ## 📚 Índex de continguts
 
-1. [**UD1 - Instal·lació**](UD1-Instal·lació.md)
+1. [**UD1 - Instal·lació**](./UD1-Instal·lació/README.md)
    - Instal·lació i configuració inicial de sistemes Linux
 
-2. [**UD2 - Configuració**](UD2-Configuració.md)
+2. [**UD2 - Configuració**](./UD2-Configuració/README.md)
    - Configuració bàsica del sistema operatiu Linux
 
-3. [**UD3 - Usuaris i Grups**](UD3-Usuaris_Grups.md)
+3. [**UD3 - Usuaris i Grups**](./UD3-Usuaris_Grups/README.md)
    - Gestió d'usuaris, grups i permisos
 
-4. [**UD4 - Compartició de Recursos**](./UD4_Compart_Recursos/README.md) RA4 12h
+4. [**UD4 - Compartició de Recursos**](./UD4_Compart_Recursos/README.md)
    - Configuració i gestió de recursos compartits
 
-5. [**UD5 - Administració Avançada**](UD5-Gestio_Avançada.md) RA5 8h
+5. [**UD5 - Administració Avançada**](./UD5-Administració_Avançada/README.md) RA5 8h
    - Tècniques avançades d'administració del sistema
 
-6. [**UD6 - Scripts**](UD6-Scripts.md) RA5 8h
+6. [**UD6 - Scripts**](./UD6-Scripts/README.md) RA5 8h
    - Introducció al scripting en Bash
 
 ---

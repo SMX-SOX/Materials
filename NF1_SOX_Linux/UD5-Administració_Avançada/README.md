@@ -1,10 +1,18 @@
-# Administració avançada de Linux
+# Administració avançada del servidor Linux
+
+RA 5. Realitza tasques de monitorització i ús del sistema operatiu en xarxa, descrivint les eines utilitzades i identificant-ne les principals incidències
+
+Durada prevista: 8 hores
 
 ## Introducció
 
-Hem justificat que a un servidor Linux no li cal una interfície gràfica per funcionar correctament. Tot i així, hi ha eines gràfiques que poden ajudar a l'administrador del sistema a monitoritzar i gestionar el servidor de manera més visual i intuïtiva.
+En un servidor de xarxa local, la instal·lació i els ajustos posteriors no són suficients, s'han de realitzar diferents tasques durant el seu funcionament per garantir que el sistema operatiu i els serveis que ofereix funcionin correctament. Aquestes tasques d'administració del sistema són essencials per mantenir la seguretat, la disponibilitat i el rendiment del servidor.
 
-Aquestes interfície es basen en aplicacions web que s'executen al servidor i que permeten accedir-hi des d'un navegador, ja sigui des del mateix servidor o des d'un altre ordinador de la xarxa.
+Per exemple, cal fer un seguiment dels esdeveniments del sistema, comprovar els processos que s'executen en moments concrets, definir quins serveis (o dimonis en terminologia Linux) estan començant pel sistema, gestionar l'execució de dimonis (aturar, reiniciar, llançar) i establir quotes de disc per als usuaris, entre altres tasques.
+
+Aquestes accions es poden realitzar mitjançant la línia d'ordres, però també hi ha eines gràfiques basades en web que faciliten l'administració del sistema i sobretot, ens permeten realitzar aquestes tasques de forma remota, sense necessitat d'accedir físicament al servidor.
+
+> **Nota:** Potser us preguntareu quin sentit té instal·lar eines de gestió gràfiques si podríem haver instal·lat directament un entorn gràfic complet (escriptori) al servidor. La resposta és que habitualment us connectareu de forma remota per gestionar el servidor i per tant, una eina remota web és més eficient que un escriptori remot complet. A més, un entorn gràfic complet consumeix molts recursos del servidor, mentre que una eina web consumeix molts menys.
 
 ## Eines gràfiques d'administració de Linux
 
@@ -14,39 +22,15 @@ Més senzill que una connexió de terminal remota (ssh) i sense necessitat de te
 
 Poden classificar-se en dues categories:
 
-- **Generals**: Són aplicacions que permeten administrar qualsevol tipus de servidor Linux, independentment del servei que ofereixi. Exemples: Webmin, Cockpit, Ajenti, etc.
-- **Específiques**: Són aplicacions que permeten administrar un tipus concret de servidor, com ara servidors web, bases de dades, etc. Exemples: phpMyAdmin (per a bases de dades MySQL), Plesk (per a servidors web), etc.
+- **Generals**: Són aplicacions que permeten administrar el servidor Linux, permetent monitoritzar recursos, gestionar els logs i en funció de l'eina administrar els diferents serveis instal·lats. Exemples: Webmin, Cockpit, Ajenti o Plesk. Incorporen fins i tot un terminal per executar les comandes remotament.
 
-### Webmin
+![webmin](./img/webmin.png)
+![cockpit](./img/cockpit.png)
 
-Webmin és una de les eines més populars per a l'administració de sistemes Linux a través d'una interfície web. Permet gestionar usuaris, grups, serveis, configuracions de xarxa, i molt més, gràcies a que ofereix una gran varietat de mòduls que cobreixen gairebé tots els aspectes de l'administració del sistema.
+- **Específiques**: En aquest cas, parlem d'aplicacions específiques que permeten gestionar un servei concret, com ara un servidor web, un servidor de correu o un servidor de bases de dades. Exemples: phpMyAdmin (per a bases de dades MySQL), Adminer (per a bases de dades SQL), phpLDAPadmin (per a directoris LDAP), Plesk (per a servidors web), etc.
 
-![Webmin](img/webmin.png)
-
-#### Instal·lació de Webmin
-
-Webmin no està disponible als repositoris oficials d'Ubuntu, per la qual cosa cal afegir el seu repositori manualment. A continuació es mostren els passos per instal·lar Webmin a Ubuntu Server:
-
-```bash
-
-# Actualitzar el sistema
-sudo apt update && sudo apt upgrade -y
-
-# Descarregar l'script de configuració del repositori de Webmin
-curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh
-
-# Executar l'script de configuració
-sudo sh webmin-setup-repo.sh
-```
-
-L'script automàticament confgigura l'accés al repositori, instal·la la clau GPG i actualitza la llista de paquets. Un cop fet això, podem instal·lar Webmin amb la següent comanda:
-
-```bash
-sudo apt install webmin --install-recommends -y
-```
-
-Un cop finalitzada la instal·lació, podem accedir a Webmin des del navegador web utilitzant l'adreça `https://<IP_DEL_SERVIDOR>:10000`.
-
+![phpMyAdmin](./img/phpmyadmin.png)
+![JXplorer](./img/jxplorer.png)
 
 ## Monitorització del servidor
 
