@@ -55,7 +55,7 @@ L'excepció és l'edició `Essentials`, que manté el model clàssic de llicènc
 
 A més, a exepció de l'edició `Essentials`, per connectar-se a un servidor Windows Server, cada usuari o dispositiu que accedeixi al servidor necessita una llicència addicional anomenada **CAL (Client Access License)**. Aquestes llicències poden ser per usuari o per dispositiu, depenent de les necessitats de l'organització.
 
-Així, les CAL d'usuari limiten el nombre d'usuaris que poden accedir al servidor (indepedentment del número de dispositius), mentre que les CAL de dispositiu limiten el nombre de dispositius que poden connectar-se al servidor.
+Així, les CAL d'usuari limiten el nombre d'usuaris que poden accedir al servidor (independentment del número de dispositius), mentre que les CAL de dispositiu limiten el nombre de dispositius que poden connectar-se al servidor.
 
 Diversos fabricants com Lenovo, HP proporcionen calculadores de llicències per ajudar a calcular el llicenciament.
 
