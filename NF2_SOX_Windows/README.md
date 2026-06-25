@@ -2,6 +2,17 @@
 
 En aquest segon nucli formatiu treballarem amb el sistema operatiu Windows Server, explorant la seva instal·lació, la configuració de l'eina que l'ha convertit en un dels sistemes operatius més utilitzats en entorns empresarials, el directori actiu, així com la compartició de recursos.
 
+## Índex de continguts
+
+1. [**UD7 - Instal·lació**](./UD7-Instal·lació/README.md)
+   - Instal·lació i configuració inicial de Windows Server
+2. [**UD8 - Directori actiu**](./UD8-Directori_Actiu/README.md)
+   - Configuració i gestió del directori actiu
+3. [**UD9 - Administració del directori actiu**](./UD9-Administracio_Directori_Actiu/README.md)
+    - Gestió d'usuaris, grups i permisos amb directori actiu
+4. [**UD10 - Compartició de recursos**](./UD10-Compart_Recursos/README.md)
+   - Configuració i gestió de recursos compartits amb directori actiu
+
 ## Introducció a Windows Server
 
 Els inicis de Microsoft en el món dels sistemes operatius es remunten a la dècada de 1980, amb el llançament de MS-DOS, que va ser el sistema operatiu dels primers PC. Posteriorment, va introduir a la seva cartera de productes Xenix, una versió de Unix per arquitectura PC.
