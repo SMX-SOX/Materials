@@ -16,10 +16,10 @@ Aquest nucli formatiu cobreix els fonaments dels sistemes operatius Linux, inclo
 4. [**UD4 - Compartició de Recursos**](./UD4_Compart_Recursos/README.md)
    - Configuració i gestió de recursos compartits
 
-5. [**UD5 - Administració Avançada**](./UD5-Administració_Avançada/README.md) RA5 8h
+5. [**UD5 - Administració Avançada**](./UD5-Administració_Avançada/README.md)
    - Tècniques avançades d'administració del sistema
 
-6. [**UD6 - Scripts**](./UD6-Scripts/README.md) RA5 8h
+6. [**UD6 - Scripts**](./UD6-Scripts/README.md)
    - Introducció al scripting en Bash
 
 ---

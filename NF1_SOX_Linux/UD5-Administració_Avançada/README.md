@@ -49,9 +49,7 @@ Permet veure una visió global de l'estat del sistema: CPU, memòria, etc. Tamb�
 
 ### Instal·lació de Webmin
 
-[Webmin](https://www.webmin.com/) és una de les eines d'administració de sistemes basada en web més clàssiques, robustes i completes per a entorns Unix i Linux. T
-
-A diferència d'opcions més modernes i lleugeres com Cockpit, Webmin actua com un autèntic panell de control integral que permet gestionar no només el propi sistema, sinó tota una col·lecció de serveis a través de mòduls configurables.
+[Webmin](https://www.webmin.com/) és una de les eines d'administració de sistemes basada en web més clàssiques, robustes i completes per a entorns Unix i Linux. A diferència d'opcions més modernes i lleugeres com Cockpit, Webmin actua com un autèntic panell de control integral que permet gestionar no només el propi sistema, sinó tota una col·lecció de serveis a través de mòduls configurables.
 
 L'inconvenient és que la seva interfície és menys intuïtiva i més complexa que la de Cockpit, i que és una aplicació força més pesada, amb més dependències i que consumeix més recursos del sistema.
 

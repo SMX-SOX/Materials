@@ -1,5 +1,9 @@
 # UD6. Gestió de servidors mitjançant scripts
 
+RA 5. Realitza tasques de monitorització i ús del sistema operatiu en xarxa, descrivint les eines utilitzades i identificant-ne les principals incidències
+
+Durada prevista: 8 hores
+
 ## Introducció
 
 Un dels reptes de l'administració de sistemes actualment és necessitat d'automatitzar tasques repetitives i gestionar múltiples servidors de manera eficient. Amb l'aparició de la cultura `devops` cal poder desplegar els entorns de manera ràpida i de la forma més desatesa possible.
