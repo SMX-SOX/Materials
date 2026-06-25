@@ -4,14 +4,12 @@ En aquest segon nucli formatiu treballarem amb el sistema operatiu Windows Serve
 
 ## Índex de continguts
 
-1. [**UD7 - Instal·lació**](./UD7-Instal·lació/README.md)
-   - Instal·lació i configuració inicial de Windows Server
-2. [**UD8 - Directori actiu**](./UD8-Directori_Actiu/README.md)
-   - Configuració i gestió del directori actiu
-3. [**UD9 - Administració del directori actiu**](./UD9-Administracio_Directori_Actiu/README.md)
-    - Gestió d'usuaris, grups i permisos amb directori actiu
-4. [**UD10 - Compartició de recursos**](./UD10-Compart_Recursos/README.md)
-   - Configuració i gestió de recursos compartits amb directori actiu
+- UD7 - Instal·lació i configuració de Windows Server
+- UD8 - Directori actiu
+- UD9 - Usuaris i grups
+- UD10 - Gestió del directori actiu
+- UD11 - Compartició de recursos
+- UD12 - Monitorització
 
 ## Introducció a Windows Server
 
