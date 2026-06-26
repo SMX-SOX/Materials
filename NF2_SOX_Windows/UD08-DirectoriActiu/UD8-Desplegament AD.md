@@ -12,7 +12,7 @@ Un servei de directori, es una base de dades que emmagatzema informació sobre e
 
 El directori actiu utilitza protocols com LDAP (Lightweight Directory Access Protocol) per a la consulta i modificació de la informació del directori, DNS (Domain Name System) per a la resolució de noms i Kerberos per a l'autenticació segura.
 
-### Objectius del directori actiu:
+### Objectius del directori actiu
 
 - Administració centralitzada:
   - Usuaris, equips i grups s’administren des d’una estructura comuna.
