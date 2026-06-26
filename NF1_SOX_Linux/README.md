@@ -2,6 +2,8 @@
 
 Aquest nucli formatiu cobreix els fonaments dels sistemes operatius Linux, incloent la instal·lació, administració, gestió d'usuaris i grups, compartició de recursos, gestió avançada del sistema i scripting bàsic.
 
+Durada estimada: 38 hores
+
 ## 📚 Índex de continguts
 
 1. [**UD1 - Instal·lació**](./UD1-Instal·lació/README.md)

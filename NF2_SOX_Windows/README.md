@@ -2,14 +2,27 @@
 
 En aquest segon nucli formatiu treballarem amb el sistema operatiu Windows Server, explorant la seva instal·lació, la configuració de l'eina que l'ha convertit en un dels sistemes operatius més utilitzats en entorns empresarials, el directori actiu, així com la compartició de recursos.
 
-## Índex de continguts
+Durada estimada: 40 hores
 
-- UD7 - Instal·lació i configuració de Windows Server
-- UD8 - Directori actiu
-- UD9 - Usuaris i grups
-- UD10 - Gestió del directori actiu
-- UD11 - Compartició de recursos
-- UD12 - Monitorització
+## 📚 Índex de continguts
+
+1. [**UD7 - Instal·lació**](./UD7-Instal·lació/README.md)
+   - Instal·lació i configuració inicial de sistemes Linux
+
+2. [**UD8 - Directori Actiu**](./UD8-DirectoriActiu/README.md)
+   - Configuració del directori actiu
+
+3. [**UD9 - Usuaris i Grups**](./UD9-Usuaris_i_Grups/README.md)
+   - Gestió d'usuaris, grups i unitats organitzatives
+
+4. [**UD10 - Gestió del Directori Actiu**](./UD10-Gestió_AD/README.md)
+   - Administració del directori actiu
+
+5. [**UD11 - Compartició de Recursos**](./UD11-Recursos/README.md)
+   - Configuració i gestió de recursos compartits
+
+6. [**UD12 - Monitorització**](./UD12-Monitoritzacio/README.md)
+   - Tècniques de monitorització del sistema
 
 ## Introducció a Windows Server
 
@@ -29,7 +42,7 @@ Windows Server des de la versió 2008 permet fer dos tipus d'instal·lació: sen
 
 Des del punt de vista de versions, Microsoft ofereix Windows Server en dues edicions principals: `Standard` i `Datacenter`. L'edició Standard està pensada per a entorns amb un nombre limitat de màquines virtuals, mentre que l'edició Datacenter és ideal per a entorns amb alta virtualització i núvol privat. Realment, la diferència principal entre ambdues edicions és el nombre de màquines virtuals que es poden executar amb cada llicència.
 
-A més hi ha dues versions més: `Windows Server Essentials`, pensada per a petites empreses i `Windows Server Datacenter Azure Edition`, que està optimitzada per a entorns de núvol i que únicament es pot instal·lar en servidors d'Azure (el cloud de Microsoft).
+A més hi ha dues versions més: `Windows Server Essentials`, pensada per a petites empreses i `Windows Server Datacenter Azure Edition`, que està optimitzada per executar-se com màquina virtual al cloud de Microsoft (Azure) o en entorns híbrids.
 
 Les diferents versions tenen limitacions a nivell de serveis, instàncies virtuals que es poden crear i límit d’usuaris.
 
@@ -51,12 +64,20 @@ Exemples:
 
 A més, la llicència `Standard` permet executar fins a **2 màquines virtuals**, mentre que la llicència `Datacenter` permet un nombre il·limitat de màquines virtuals.
 
-L'excepció és l'edició `Essentials`, que manté el model clàssic de llicència per servidor i permet un màxim de 25 usuaris i 50 dispositius. Habitualment és una llicència que es compra amb el servidor ROK (Reseller Option Kit).
+L'excepció és l'edició `Essentials`, que manté el model clàssic de llicència per servidor i permet un màxim de 25 usuaris i 50 dispositius. Habitualment és una llicència que es compra amb el servidor OEM (Original Equipment Manufacturer).
 
 A més, a exepció de l'edició `Essentials`, per connectar-se a un servidor Windows Server, cada usuari o dispositiu que accedeixi al servidor necessita una llicència addicional anomenada **CAL (Client Access License)**. Aquestes llicències poden ser per usuari o per dispositiu, depenent de les necessitats de l'organització.
+
+![CALs d'usuari i dispositiu](./img/CALs.png)
 
 Així, les CAL d'usuari limiten el nombre d'usuaris que poden accedir al servidor (independentment del número de dispositius), mentre que les CAL de dispositiu limiten el nombre de dispositius que poden connectar-se al servidor.
 
 Diversos fabricants com Lenovo, HP proporcionen calculadores de llicències per ajudar a calcular el llicenciament.
 
-[Lenovo. Licensing Calculator](https://www.lenovosalesportal.com/windows-server-2025-core-licensing-calculator.aspx)
+## Enllaços d'interès
+
+- [ITECHTics. Complete List of Windows Server Versions and Timeline](https://www.itechtics.com/windows-server-versions/)
+- [Microsoft Learn. ¿Qué es Windows Server](https://learn.microsoft.com/es-es/windows-server/get-started/overview)
+- [Microsoft. Precios y licencias de Windows Server](https://www.microsoft.com/es-es/windows-server/pricing)
+- [Windows Server 2025 Essentials](https://learn.microsoft.com/en-us/windows-server/get-started/essentials)
+- [Lenovo. Licensing Calculator](https://www.lenovosalesportal.com/windows-server-2025-core-licensing-calculator.aspx)
