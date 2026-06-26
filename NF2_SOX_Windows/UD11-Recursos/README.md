@@ -1,1 +1,0 @@
-# UD 11. Compartició de recursos en entorns Windows

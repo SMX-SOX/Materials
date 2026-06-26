@@ -15,11 +15,11 @@ Durada estimada: 40 hores
 3. [**UD9 - Usuaris i Grups**](./UD9-Usuaris_i_Grups/README.md)
    - Gestió d'usuaris, grups i unitats organitzatives
 
-4. [**UD10 - Gestió del Directori Actiu**](./UD10-Gestió_AD/README.md)
-   - Administració del directori actiu
-
-5. [**UD11 - Compartició de Recursos**](./UD11-Recursos/README.md)
+4. [**UD10 - Compartició de recursos en Directori Actiu**](./UD10-Recursos/README.md)
    - Configuració i gestió de recursos compartits
+
+5. [**UD11 - Administració del Directori Actiu**](./UD11-Gestió_AD/README.md)
+   - Administració i gestió del directori actiu: GPO.
 
 6. [**UD12 - Monitorització**](./UD12-Monitoritzacio/README.md)
    - Tècniques de monitorització del sistema
