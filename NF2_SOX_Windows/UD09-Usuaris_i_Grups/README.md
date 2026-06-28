@@ -58,7 +58,7 @@ Com els grups seran comuns entre les dues seus, els ubiquem a una unitat organit
 
 És la consola que permet gestionar els objectes del directori actiu. Des d'aquesta consola podrem crear, modificar i eliminar unitats organitzatives, usuaris i grups.
 
-![UD9_01](./img/UD_01.png)
+![UD9_01](./img/UD9_01.png)
 
 ![UD9_02](./img/UD9_02.png)
 
@@ -162,9 +162,17 @@ Crear la carpeta on ubicareu les carpetes personals, per exemple "home".
 
 Els permisos d'una carpeta es propaguen a les subcarpetes i fitxers que conté, per tant, això s'anomena **herència**. En el cas de les carpetes personals, aixó seria un problema, ja que tots els usuaris tindrien accés a les carpetes personals dels altres usuaris. Per evitar-ho, cal desactivar l'herència de permisos a la carpeta personal.
 
+En primer lloc, accedim a les propietats de la carpeta i a la pestanya "Seguretat" fem clic a "Opcions avançades".
+
 ![UD9_07](./img/UD9_07.png)
 
-El més senzill és sempre convertir els permisos heretats en permisos explícits, i després eliminar els permisos que no volem que tinguin accés a la carpeta.
+Es pot veure com la carpeta ha heretat els permisos de la carpeta pare.
+
+![UD9_08](./img/UD9_08.png)
+
+Per evitar-ho, el més senzill és sempre convertir els permisos heretats en permisos explícits, i després eliminar els permisos que no volem que tinguin accés a la carpeta.
+
+![UD9_09](./img/UD9_09.png)
 
 Quins permisos definirem?
 
@@ -174,17 +182,21 @@ Quins permisos definirem?
 
 Hi ha un permís que no cal definir que és que l'usuari propietari **"creator owner"** de la carpeta tingui control total a les subcarpetes i fitxers que creï dins la carpeta personal. Aquest permís s'assigna automàticament pel sistema operatiu.
 
-![UD9_08](./img/UD9_08.png)
+Per modificar aquests permisos, usem l'opció "Edit" i modifiquem tant els permisos com la propagació a subcarpetes i fitxers.
+
+![UD9_10](./img/UD9_10.png)
+
+Al final, la configuració de permisos de la carpeta personal hauria de quedar així:
+
+![UD9_11](./img/UD9_11.png)
 
 A continuació, compartirem la carpeta personal a la xarxa. Per fer-ho, feu clic amb el botó dret sobre la carpeta i seleccioneu "Propietats" -> "Compartir" -> "Compartir avançat". Marqueu l'opció "Comparteix aquesta carpeta" i feu clic a "Permisos" i donem permisos "Full Control" al grup "Domain Users". D'aquesta manera, tots els usuaris del domini podran accedir a la carpeta compartida.
 
-![UD9_09](./img/UD9_09.png)
+![UD9_12](./img/UD9_12.png)
 
 #### Creació carpeta perfil mòbil
 
-La creació de la carpeta del perfils mòbils és exactament igual que la creació de la carpeta personal, amb l'única diferència que el nom de la carpeta és diferent, per exemple "profiles".
-
-![UD9_10](./img/UD9_10.png)
+La creació de la carpeta del perfils mòbils es fa de la mateixa manera que la creació de la carpeta personal, amb l'única diferència que el nom de la carpeta és diferent, per exemple "profiles" o "perfils". És a dir, es crea la carpeta, es comparteix a la xarxa i es defineixen els permisos de forma idèntica al que hem fet amb la carpeta personal.
 
 ### Plantilles d'usuari
 
@@ -192,15 +204,15 @@ Una plantilla no és res més que un usuari "tipus" per un grup d'usuaris. Per e
 
 Com exemple, crearem la plantilla dels usuaris tècnics. Li posarem com a nom "_tecnic". El guionet inicial ens serveix per saber que és una plantilla i no un usuari real. A part, té l'avantatge que les plantilles apareixen a dalt del a llista d'objectes de la OU. A la fitxa de l'usuari, a la pestanya "Account" marcarem l'opció "Account is disabled".
 
-![UD9_11](./img/UD9_11.png)
+![UD9_13](./img/UD9_13.png)
 
-![UD9_12](./img/UD9_12.png)
+![UD9_14](./img/UD9_14.png)
 
 A la plantilla es defineix la pertinença als grups, en aquest cas, el grup "tecnics".
 
 A la pestanya de "Profile" definirem la ruta de la carpeta personal i del perfil mòbil. La ruta de la carpeta personal i del perfil tindrà l'estructura següent:
 
-```bash
+```shell
 \\nom_del_servidor\nom_del_recurs_compartit\%username%
 ```
 
@@ -208,7 +220,7 @@ El nom del recurs compartit serà "home" o "profiles" segons si és la carpeta p
 
 Per tant, la rutes seran:
 
-```bash
+```shell
 \\DC1\home\%username%
 \\DC1\profiles\%username%
 ```
