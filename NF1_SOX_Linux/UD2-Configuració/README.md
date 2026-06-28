@@ -136,6 +136,21 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
+A més `hostnamectl` ens permet veure informació sobre el nom de la màquina, com el nom de l'amfitrió (hostname), el nom de la màquina (machine ID), la versió del sistema operatiu, el nucli (kernel) i l'arquitectura del processador. Per exemple, si executem la comanda `hostnamectl`, obtindrem una sortida similar a la següent:
+
+```bash
+usuari@arrakis:~$ hostnamectl
+ Static hostname: arrakis
+       Icon name: computer-container
+         Chassis: container
+      Machine ID: eb90f4d2cab54ee49c3840de8e9c0e6c
+         Boot ID: 3e1be94609e94e918673592666af4940
+  Virtualization: wsl
+Operating System: Ubuntu 24.04.4 LTS
+          Kernel: Linux 6.18.33.2-microsoft-standard-WSL2
+    Architecture: x86-64
+```
+
 ### Configuració del teclat
 
 En primer lloc, amb la comanda `localectl status` podem veure la configuració actual del sistema, incloent l'idioma i la distribució del teclat. Per canviar la distribució del teclat, podem utilitzar la comanda `sudo dpkg-reconfigure keyboard-configuration`, que ens permetrà seleccionar la distribució adequada segons el nostre teclat físic. Un cop fet el canvi, cal reiniciar el servei de teclat amb `sudo service keyboard-setup restart` per aplicar els canvis.
