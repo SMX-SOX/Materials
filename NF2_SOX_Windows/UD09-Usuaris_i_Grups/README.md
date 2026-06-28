@@ -108,7 +108,7 @@ A Propietas del grup podem definir els "Members" del grup, és a dir, els usuari
 
 A un grup afegirem normalment usuaris, però també es poden afegir grups. Per exemple, es pot definir un GSINF que inclogui dos grups, DAM i DAW, així tot els membres de DAM i tots els membres de DAW són membres del grup GSINF.
 
-Per l'exemple que anirem desenvolupant al llarg de la unitat, crearem dos grups globals: "tecnics" i "gestio".
+Per l'exemple que anirem desenvolupant al llarg de la unitat, crearem dos grups globals: "HR" i "tecnics".
 
 ## Usuaris
 
