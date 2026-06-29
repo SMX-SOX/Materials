@@ -2,7 +2,7 @@
 
 RA4. Gestiona els recursos compartits del sistema, interpretant especificacions i determinant nivells de seguretat.
 
-Durada prevista: 12 hores
+Durada prevista: 16 hores
 
 ## Introducció a la unitat
 
@@ -57,3 +57,19 @@ Sobre un recurs compartit hi afecten dos tipus de permisos: els permisos del sis
     </tr>
   </tbody>
 </table>
+
+## Permisos i herència
+
+El sistema de fitxers NTFS permet assignar permisos a fitxers i carpetes, i aquests permisos es poden heretar de la carpeta pare. A més, els permisos es poden assignar a usuaris o grups d'usuaris, ja que NTFS usa el model ACL (Access Control List) per assignar permisos. Els permisos bàsics que es poden assignar són: lectura, escriptura, modificació i control total. Aquests permisos es poden desgranar en permisos més modulars.
+
+![Permisos NTFS](img/UD11_01.png)
+
+![Permisos NTFS avançats](img/UD11_02.png)
+
+Normalment quan es defineix un recurs compartit, és bona pràctica eliminar l'herència de permisos i assignar els permisos necessaris a usuaris o grups d'usuaris, ja que si es deixa l'herència, els permisos de la carpeta pare poden afectar al recurs compartit.
+
+![Herència de permisos](img/UD11_03.png)
+
+Els permisos compartits són molt més limitats que els permisos NTFS, ja que només permeten assignar tres tipus de permisos: cap, només lectura i lectura i modificació.
+
+Per aquest motiu i atès que en entorns de directori actiu l'accés als servidors de fitxers (o al propi controlador de domini si assumeix el rol) està molt limitat, compartim de forma laxa (permisos totals a tothom) i controlem l'accés amb els permisos NTFS, que són molt potents.
