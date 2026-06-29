@@ -108,8 +108,6 @@ Un cop aplicada la GPO i actualitzades les polítiques als equips clients, els m
 
 > Si us heu fixat en aquesta ocasió el que hem configurat és una GPO de tipus "Preferences" i no de tipus "Policies". La diferència és que les configuracions de tipus "Preferences" s'apliquen una sola vegada , mentre que les configuracions de tipus "Policies" s'apliquen de manera contínua i si localment es modifiquen, en tornar a carregar-se la GPO, es torna a aplicar el canvi.
 
-## Exemple 3: Configuració del firewall dels equips clients
-
 ## Instal·lació desatesa de software
 
 L’objectiu és centralitzar el procediment d’instal·lar o desinstal·lar programes al clients des del servidor, això estalvia haver d'anar equip per equip fent les instal·lacions. A més, permet tenir un control molt més gran de quin software s'instal·la a cada equip.
@@ -165,3 +163,35 @@ I com podem desinstal·lar l'aplicació? Si volem desinstal·lar l'aplicació, p
 ![Desinstal·lació de l'aplicació](./img/UD10_08.png)
 
 ### Instal·lació publicada
+
+Les aplicacions publicades no s’instal·len, si no que es mostren a l’usuari per instal·lar-les. És una bona forma d’oferir un catàleg d’aplicacions disponibles pels usuaris perquè es poden fer filtres per grups (una aplicació estarà disponible per uns usuaris i per altres no).
+
+Per exemple, anem a oferir Firefox com a aplicació publicada però només pels mebres del grup HR de la OU "BCN". Crearem una nova GPO anomenada "Firefox Publicat" i la vincularem a la OU "BCN".
+
+![Instal·lació publicada](./img/UD10_09.png)
+
+Igual que en el cas anterior, editarem la GPO i anirem a "User Configuration" > "Policies" > "Software Settings" > "Software installation". Farem clic amb el botó dret i seleccionarem "New" > "Package". A continuació, navegarem fins a la unitat compartida `soft` i seleccionarem el fitxer `.msi` de l'aplicació "Firefox". Ara triarem "Published" per fer una instal·lació publicada.
+
+![Selecció del fitxer d'instal·lació publicada](./img/UD10_10.png)
+
+Ara cal forçar que la GPO s’apliqui a un grup o grups concrets, per exemple, en aquest cas al grup HR.Per defecte, a `Security Filtering` es troba el grup Authenticated Users.S’ha d’eliminar, però a `Delegation` se l’ha d’afegir (Add) amb permís de lectura.
+
+![Filtrat de seguretat per a la GPO publicada](./img/UD10_11.png)
+
+Per últim a `Scope`a `Security Filtering` afegirem el grup HR.
+
+![Filtrat de seguretat per a la GPO publicada](./img/UD10_12.png)
+
+Un cop configurada la GPO, s'actualitzarà en el client. S'iniciem sessió ara amb un usuari que pertanyi al grup HR, podrem veure l'aplicació "Firefox" disponible per instal·lar-la des del "Control Panel" > "Programs and Features" > "Install a program from the network". Els usuaris que no pertanyin al grup HR no veuran l'aplicació disponible.
+
+## Enllaços d'interès
+
+- [Solvetic. Crear y administrar Políticas de Grupo GPO Windows Server 2022](
+https://www.solvetic.com/tutoriales/article 9858-crear-y-administrar-politicas-de-grupo-gpo-windows-server-2022/)
+
+- [Microsoft Technet. 10 Common Problems Causing Group Policy To Not Apply](
+https://social.technet.microsoft.com/wiki/contents/articles/22457.10-common-problems-causing-group-policy-to-not-apply.aspx)
+
+- [Active Directory Pro. Group Policy Management Guide](https://activedirectorypro.com/group-policy-guide/)
+
+- [Danny Moran. How to use Group Policy Securing Filtering](https://www.dannymoran.com/group-policy-security-filtering/)
