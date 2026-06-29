@@ -1,5 +1,7 @@
 # AA1 Servidor de Fitxers
 
+Durada prevista: 12 hores
+
 La compartició de fitxers sempre ha estat un dels punts forts de les xarxes de Windows, en una xarxa entre iguals o de grup de treball és molt senzill compartir i publicar els recursos compartits, fins i tot no cal ni indicar les IP sinó que per nom de l'ordinador: per NetBIOS a sistemes antics i actualment per mDNS.
 
 En entorns de directori actiu, l'habitual és que els recursos compartits estiguin centralitzats en un servidor de fitxers i la publicació dels recursos es fa mitjançant GPOs (Group Policy Objects).
