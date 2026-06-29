@@ -202,13 +202,13 @@ La creació de la carpeta del perfils mòbils es fa de la mateixa manera que la 
 
 Una plantilla no és res més que un usuari "tipus" per un grup d'usuaris. Per exemple, podem crear un usuari plantilla per a tots els professors i un altre usuari plantilla per a tots els alumnes. Com no és un usuari real, aquest usuari ha d'estar deshabilitat.
 
-Com exemple, crearem la plantilla dels usuaris tècnics. Li posarem com a nom "_tecnic". El guionet inicial ens serveix per saber que és una plantilla i no un usuari real. A part, té l'avantatge que les plantilles apareixen a dalt del a llista d'objectes de la OU. A la fitxa de l'usuari, a la pestanya "Account" marcarem l'opció "Account is disabled".
+Com exemple, crearem la plantilla dels usuaris HR de la OU Barcelona, per fer-ho, ens anirem a la OU triada i farem nou usuari. A l'hora de posar el nom, triem "_BCN-HR-Template". El guionet inicial ens serveix per saber que és una plantilla i no un usuari real. A part, té l'avantatge que les plantilles apareixen a dalt del a llista d'objectes de la OU. A la fitxa de l'usuari, a la pestanya "Account" marcarem l'opció "Account is disabled".
 
 ![UD9_13](./img/UD9_13.png)
 
-![UD9_14](./img/UD9_14.png)
+A les propietats de la plantilla es defineix la pertinença als grups, en aquest cas, el grup "HR".
 
-A la plantilla es defineix la pertinença als grups, en aquest cas, el grup "tecnics".
+![UD9_14](./img/UD9_14.png)
 
 A la pestanya de "Profile" definirem la ruta de la carpeta personal i del perfil mòbil. La ruta de la carpeta personal i del perfil tindrà l'estructura següent:
 
@@ -216,7 +216,9 @@ A la pestanya de "Profile" definirem la ruta de la carpeta personal i del perfil
 \\nom_del_servidor\nom_del_recurs_compartit\%username%
 ```
 
-El nom del recurs compartit serà "home" o "profiles" segons si és la carpeta personal o el perfil mòbil. El nom del servidor serà el nom que li hàgim posat al servidor, en el nostre cas "DC1". I què és %username%? Doncs és una variable que el sistema substitueix pel nom d'usuari de l'usuari que s'està creant. D'aquesta manera, quan es crea un usuari amb nom "joan.abella", la ruta de la carpeta personal serà:
+El nom del recurs compartit serà "home" o "profiles" segons si és la carpeta personal o el perfil mòbil. El nom del servidor serà el nom que li hàgim posat al servidor, en el nostre cas "DC1".
+
+I què és `%username%`? Doncs és una variable que el sistema substitueix pel nom d'usuari de l'usuari que s'està creant. D'aquesta manera, quan es crea un usuari amb nom "joan.abella", la ruta de la carpeta personal serà:
 
 Per tant, la rutes seran:
 
@@ -225,7 +227,9 @@ Per tant, la rutes seran:
 \\DC1\profiles\%username%
 ```
 
-Vigileu no posar mai la ruta local, perquè li estaríem dient que cerqui el recurs a l'equip local i no al servidor.
+![UD9_15](./img/UD9_15.png)
+
+**Vigileu no posar mai la ruta local**, perquè li estaríem dient que cerqui el recurs a l'equip local i no al servidor.
 
 ### Creació d'usuaris a partir d'una plantilla
 
@@ -235,7 +239,7 @@ Doncs és molt senzill, feu clic amb el botó dret sobre la plantilla i seleccio
 
 La resta de propietats (pertinença als grups, perfils, carpetes personals, etc.) es copiaran de la plantilla.
 
-![UD9_13](./img/UD9_13.png)
+![UD9_16](./img/UD9_16.png)
 
 ## Equips
 
@@ -245,7 +249,9 @@ Per aconseguir que l'equip estigui a la OU que volem, és millor aprovisionar el
 
 Dins de la OU creada pels equips, farem "Nou equip" i definirem el nom de l'equip.
 
-![UD9_14](./img/UD9_14.png)
+![UD9_17](./img/UD9_17.png)
+
+![UD9_17b](./img/UD9_17b.png)
 
 ### Agregar equips al domini
 
@@ -255,23 +261,23 @@ A l'equip client farem les següents accions:
 
 - A configuració de xarxa, canviarem el DNS i posarem la IP del controlador del domini.
 
-![UD9_15](./img/UD9_15.png)
+![UD9_18](./img/UD9_18.png)
 
 - A "Propiedades" de l'equip a "cambios en el dominio o el nombre del equipo", canviarem de membre de "Grupo de Trabajo" a membre de "Dominio" i posarem el nom del domini.
 
-![UD9_16](./img/UD9_16.png)
+![UD9_19](./img/UD9_19.png)
 
 A continuació, ens demanarà unes credencials per agregar l'equip al domini. Per defecte, qualsevol usuari del domini pot agregar equips al domini, però normalment serà una acció que farà l'administrador del domini.
 
-![UD9_17](./img/UD9_17.png)
+![UD9_20](./img/UD9_20.png)
 
 Una vegada acceptat, ens demanarà reiniciar l'equip. Un cop reiniciat, ja podrem validar-nos amb un usuari del domini. També podrem veure com l'equip s'ha agregat a la unitat organitzativa que hem definit.
 
-![UD9_18](./img/UD9_18.png)
+![UD9_21](./img/UD9_21.png)
 
 Un cop iniciada sessió amb un usuari del domini, podrem veure com el directori actiu ha creat la carpeta personal i el perfil mòbil de l'usuari a la xarxa.
 
-![UD9_19](./img/UD9_19.png)
+![UD9_22](./img/UD9_22.png)
 
 ## Enllaços d'interès
 
