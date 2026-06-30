@@ -184,6 +184,48 @@ Per últim a `Scope`a `Security Filtering` afegirem el grup HR.
 
 Un cop configurada la GPO, s'actualitzarà en el client. S'iniciem sessió ara amb un usuari que pertanyi al grup HR, podrem veure l'aplicació "Firefox" disponible per instal·lar-la des del "Control Panel" > "Programs and Features" > "Install a program from the network". Els usuaris que no pertanyin al grup HR no veuran l'aplicació disponible.
 
+## Administració remota
+
+En entorns de producció no sol ser habitual poder treballar directament al servidor perquè sovint és un equip situat al CPD. Una primera alternativa és connectar-s’hi per escriptori remot (RDP) però exigeix un consum elevat de recursos. Existeixen diverses alternatives: com usar el Server Manager remotament des d'un servidor, PowerShell remot o el que és més habitual, usar les RSAT (Remote Server Administration Tools) des d’un client Windows.
+
+### RSAT (Remote Server Administration Tools)
+
+Conjunt d’eines per gestionar remotament un servidor Windows Server, això inclou des del Server Manager a les diferents consoles que trobem a Tools. Fins octubre del 2018 calia baixar el paquet de la pàgina de Microsoft, però ara està disponible per instal·lar com una característica addicional.
+
+![Instal·lació de RSAT](./img/UD10_13.png)
+
+![Instal·lació de RSAT](./img/UD10_14.png)
+
+Al connectar-nos des del client com un administrador del domini, podrem gestionar el servidor com si estiguéssim treballant directament amb el Server Manager.
+
+Ara caldrà afegir el servidor o servidors que es vulguin administar (recordar que Server Manager permet administrar diversos servidors alhora). Per fer-ho, anirem a "Manage" > "Add Servers" i afegirem el servidor o servidors que volem gestionar.
+
+![Afegir servidors a Server Manager](./img/UD10_15.png)
+
+Un cop agregat se li poden assignar rols i característiques, així com gestionar els serveis i recursos del servidor de manera remota.
+
+## Delegació
+
+Un dels motius per definir una OU és permetre la delegació. Una situació habitual és que no volem carregar determinades accions habituals en els administradors, per exemple, reiniciar contrasenyes, habilitar o deshabilitar comptes, etc.
+
+La idea és que un usuari responsable pugui realitzar aquestes accions. La solució **mai és afegir usuaris al grup d’administradors de domini**. El que farem serà delegar les accions que es consideren oportunes a un usuari o grup d’usuaris. Per fer-ho, seleccionarem la OU i farem clic amb el botó dret i seleccionarem "Delegate Control".
+
+![Delegació de control a una OU](./img/UD10_16.png)
+
+Afegirem aquells usuaris o grups que vulguem que tinguin aquesta elevació de drets.
+
+![Afegir usuaris o grups per a la delegació](./img/UD10_17.png)
+
+Seleccionem quines accions volem permetre que faci aquests usuaris avançats.
+
+![Selecció d'accions per a la delegació](./img/UD10_18.png)
+
+Ara iniciem sessió a l’equip client o hem instal·lat les RSAT amb les credencials de l’usuari avançat, obrim el Server Manager i anem a la consola d'Active Directory Users and Computers i podem veure com l'usuari avançat pot crear un nou usuari dins de la OU, però no pot crear-lo a nivell de domini.
+
+![Usuari avançat creant un nou usuari dins de la OU](./img/UD10_19.png)
+
+![Usuari avançat intentant crear un nou usuari a nivell de domini](./img/UD10_20.png)
+
 ## Enllaços d'interès
 
 - [Solvetic. Crear y administrar Políticas de Grupo GPO Windows Server 2022](https://www.solvetic.com/tutoriales/article9858-crear-y-administrar-politicas-de-grupo-gpo-windows-server-2022/)
@@ -194,3 +236,5 @@ https://social.technet.microsoft.com/wiki/contents/articles/22457.10-common-prob
 - [Active Directory Pro. Group Policy Management Guide](https://activedirectorypro.com/group-policy-guide/)
 
 - [Danny Moran. How to use Group Policy Securing Filtering](https://www.dannymoran.com/group-policy-security-filtering/)
+
+- [Remote Server Administration Tools (RSAT) for Windows 10](https://docs.microsoft.com/en-us/windows-server/remote/remote-server-administration-tools)
