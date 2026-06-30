@@ -6,10 +6,12 @@ Durada estimada: 24 hores
 
 ## 📚 Índex de continguts
 
-1. [**UD13 - Integració de sistemes operatius**](./UD13-IntegracioSO/README.md)
+1. [**UD13 - Integració de sistemes operatius**](./UD13-IntegracioLinux/README.md)
    - Integració d'equips Linux o macOS en un entorn de Directori Actiu (Active Directory) de Windows, permeten l'autenticació centralitzada i l'accés a recursos compartits.
 2. [**UD14 - Servidors de recursos Linux**](./UD14-ServidorsLinux/README.md)
    - Ús de servidors de recursos Linux per tal que siguin consumits per equips clients Widows.
+3. [**UD15 - Directori actiu amb Linux**](./UD15-DirectoriActiuLinux/README.md)
+   - Creació d'entorns de directori actiu usant servidor Linux com control·ladors de domini.
 
 ## Introducció
 
