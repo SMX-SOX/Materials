@@ -31,3 +31,9 @@ Per instal·lar la impressora, en primer lloc ens pregunta on està connectada l
 El següent pas és seleccionar el fabricant i el model de la impressora, per fer això, es triar l'opció "Install a new driver". Aquí ens apareixerà una llista de fabricants i models d'impressores i, per exemple, triem  una impressora "Brother".
 
 Un cop fet això, ens apareixerà a la llista d'impressores disponibles.
+
+## Enllaços d'interès
+
+- [El Profe Tech: CURSO WINDOWS SERVER 2022 DESDE CERO | INSTALAR Y CONFIGURAR UN SERVIDOR DE IMPRESION](https://youtu.be/6N8FGEVeRP8?si=bAw8GvKXNRWhd5sZ)
+
+- [Solvetic: Crear configurar servidor de impresión en Windows Server 2016](https://www.solvetic.com/tutoriales/article/3349-crear-configurar-servidor-de-impresion-windows-server-2016/)
