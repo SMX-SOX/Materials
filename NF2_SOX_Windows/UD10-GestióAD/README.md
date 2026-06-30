@@ -186,8 +186,7 @@ Un cop configurada la GPO, s'actualitzarà en el client. S'iniciem sessió ara a
 
 ## Enllaços d'interès
 
-- [Solvetic. Crear y administrar Políticas de Grupo GPO Windows Server 2022](
-https://www.solvetic.com/tutoriales/article 9858-crear-y-administrar-politicas-de-grupo-gpo-windows-server-2022/)
+- [Solvetic. Crear y administrar Políticas de Grupo GPO Windows Server 2022](https://www.solvetic.com/tutoriales/article9858-crear-y-administrar-politicas-de-grupo-gpo-windows-server-2022/)
 
 - [Microsoft Technet. 10 Common Problems Causing Group Policy To Not Apply](
 https://social.technet.microsoft.com/wiki/contents/articles/22457.10-common-problems-causing-group-policy-to-not-apply.aspx)
