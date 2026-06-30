@@ -23,40 +23,45 @@ La versió  més recent és SMB 3.1.1, que s'inclou a partir de Windows Server 2
 
 Sobre un recurs compartit hi afecten dos tipus de permisos: els permisos del sistema de fitxers NTFS i els permisos del recurs compartit. Els permisos NTFS s'apliquen a nivell de sistema de fitxers i afecten tant quan l'accés és local com a través de la xarxa, mentre que els permisos del recurs compartit s'apliquen a nivell de xarxa.
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2" rowspan="2"></th>
-      <th colspan="3" align="center">Permisos de compartició</th>
-    </tr>
-    <tr>
-      <th align="center">Cap</th>
-      <th align="center">Només lectura</th>
-      <th align="center">Lectura i modificació</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td rowspan="3"><b>Permisos locals</b></td>
-      <td><b>Cap</b></td>
-      <td align="center">Cap</td>
-      <td align="center">Cap</td>
-      <td align="center">Cap</td>
-    </tr>
-    <tr>
-      <td><b>Només lectura</b></td>
-      <td align="center">Cap</td>
-      <td align="center">Només lectura</td>
-      <td align="center">Només lectura</td>
-    </tr>
-    <tr>
-      <td><b>Lectura i modificació</b></td>
-      <td align="center">Cap</td>
-      <td align="center">Només lectura</td>
-      <td align="center">Lectura i modificació</td>
-    </tr>
-  </tbody>
-</table>
+```mermaid
+block-beta
+  columns 4
+
+  %% Cel·les de la capçalera (Fila 1)
+  h0["Locals ↓ / Compartició →"]
+  h1["Cap"]
+  h2["Només lectura"]
+  h3["Lectura i modificació"]
+
+  %% Primera fila de dades (Fila 2)
+  r1["Cap"]
+  c11["Cap"]
+  c12["Cap"]
+  c13["Cap"]
+
+  %% Segona fila de dades (Fila 3)
+  r2["Només lectura"]
+  c21["Cap"]
+  c22["Només lectura"]
+  c23["Només lectura"]
+
+  %% Tercera fila de dades (Fila 4)
+  r3["Lectura i modificació"]
+  c31["Cap"]
+  c32["Només lectura"]
+  c33["Lectura i modificació"]
+
+  %% Estils per diferenciar les capçaleres de les dades
+  style h0 fill:#e0e0e0,stroke:#333,font-weight:bold
+  style h1 fill:#ececec,stroke:#333,font-weight:bold
+  style h2 fill:#ececec,stroke:#333,font-weight:bold
+  style h3 fill:#ececec,stroke:#333,font-weight:bold
+  
+  style r1 fill:#ececec,stroke:#333,font-weight:bold
+  style r2 fill:#ececec,stroke:#333,font-weight:bold
+  style r3 fill:#ececec,stroke:#333,font-weight:bold
+
+```
 
 ## Permisos i herència
 
@@ -72,4 +77,16 @@ Normalment quan es defineix un recurs compartit, és bona pràctica eliminar l'h
 
 Els permisos compartits són molt més limitats que els permisos NTFS, ja que només permeten assignar tres tipus de permisos: cap, només lectura i lectura i modificació.
 
+![Permisos compartits](img/UD11_04.png)
+
+> Tot i que des de l'explorador de fitxers hi ha l'opció de compartir recursos simple, com a usuaris avançats és recomanable utilitzar la compartició avançada, ja que permet assignar permisos més detallats i controlar millor l'accés als recursos compartits.
+
 Per aquest motiu i atès que en entorns de directori actiu l'accés als servidors de fitxers (o al propi controlador de domini si assumeix el rol) està molt limitat, compartim de forma laxa (permisos totals a tothom) i controlem l'accés amb els permisos NTFS, que són molt potents.
+
+En intranets corporatives grans l'habitual és tenir equips servidors dedicats com servidors de fixers, però en entorns petits o de laboratori, el controlador de domini també pot assumir el rol de servidor de fitxers i d'impressió.
+
+A continuació veurem com configurar en el nostre servidor Windows els recursos compartits:
+
+1. [Servidor de fitxers](AA1-ServidorFitxer.md)
+
+2. [Servidor d'impressió](AA2-ServidorImpressio.md)

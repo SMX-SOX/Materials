@@ -1,6 +1,4 @@
-# AA1 Servidor de Fitxers
-
-Durada prevista: 12 hores
+# Servidor de Fitxers
 
 La compartició de fitxers sempre ha estat un dels punts forts de les xarxes de Windows, en una xarxa entre iguals o de grup de treball és molt senzill compartir i publicar els recursos compartits, fins i tot no cal ni indicar les IP sinó que per nom de l'ordinador: per NetBIOS a sistemes antics i actualment per mDNS.
 
@@ -20,21 +18,23 @@ Preferentment usarem Server Manager ja que ens proporciona una forma senzilla i 
 
 A Server Manager triar la pestanya "File and Storage Services" i després a "Shares". A la dreta hi ha l'opció "Tasks" i dins d'aquesta l'opció "New Share".
 
-![Server Manager](img/UD11_04.png)
+![Server Manager](img/UD11_05.png)
+
+![New Share](img/UD11_06.png)
 
 L’assistent ens permet triar quin tipus de compartició es vol fer (SMB o NFS) i de forma senzilla o amb opcions més complexes.
 
-![Tipus de compartició](img/UD11_05.png)
+![Tipus de compartició](img/UD11_07.png)
 
 > Us pot sorprendre veure compartició recursos `NFS` en un entorn Windows, però Windows Server ha inclòs el servei de NFS per poder compartir recursos amb sistemes Linux i Unix.
 
 Se selecciona la carpeta que es vol compartir i es defineix el nom del recurs compartit i ja ens proposarà permisos per defecte, que es poden modificar. També es poden definir permisos avançats i opcions de quota i filtratge de fitxers.
 
-![Compartició de recursos](img/UD11_06.png)
+![Compartició de recursos](img/UD11_08.png)
 
 Podem triar diverses opcions sobre el recurs compartit:
 
-![Opcions de compartició](img/UD11_07.png)
+![Opcions de compartició](img/UD11_09.png)
 
 - **Habilitar enumeració basada a l'accés**
 Aquesta opció permet que el usuari que accedeix al recurs compartit vegi únicament les carpetes a las que té permís d'accés, sinó no podrà veure res ja que Windows Server l’amagarà. Aplica a les carpetes que es creen dins del recurs compartit i a les carpetes que ja existeixen. Per exemple, és molt útil per a la carpeta on es defineixen les carpetes personals dels usuaris, ja que cada usuari només veurà la seva carpeta i no les dels altres.
@@ -47,7 +47,9 @@ Serveix per  incrementar la seguretat dels recursos compartits xifrant la comuni
 
 Si s’especifiquen aquestes propietats, es poden aplicar directives específiques o les regles de classificació.
 
-![Opcions de compartició](img/UD11_08.png)
+Definició dels permisos amb el botó "Customize permissions" i es poden definir permisos per grups i usuaris.
+
+![Permisos](img/UD11_10.png)
 
 ### Compartició de carpetes amb PowerShell
 
