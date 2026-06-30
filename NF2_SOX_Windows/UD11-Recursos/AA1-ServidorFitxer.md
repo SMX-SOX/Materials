@@ -78,11 +78,11 @@ Les quotes NTFS es poden configurar per usuari i afecten a tota la unitat de dis
 
 Per configurar la quota NTFS cal anar a les propietats del volum.
 
-![Quotes de disc](img/UD11_09.png)
+![Quotes de disc](img/UD11_12.png)
 
 La quota només es pot aplicar de forma general, aplicant un límit i un límit d’avís. A `Quota Entries` podem veure totes les configuracions de quota creades per un volum.
 
-![Quotes de disc](img/UD11_10.png)
+![Quotes de disc](img/UD11_13.png)
 
 Les quotes es poden establir únicament per usuaris.
 
@@ -96,7 +96,7 @@ Si necessitem limitar l'espai de disc tant per usuari com per carpetes, s'haurà
 
 En Tools anar a File Server Resource Manager. A la consola anar a `Quota Management` i anar a `Quota Templates`. També es pot fer des del Server Manager.
 
-![FSRM](img/UD11_12.png)
+![FSRM](img/UD11_14.png)
 
 Per crear una nova Quota Template, configurarem les següents dades:
 
@@ -104,19 +104,19 @@ Per crear una nova Quota Template, configurarem les següents dades:
 - Limit: 250 MB
 - En Add Threshold clicar sobre Report tab. Seleccionar generar informes (Generate Reports) per arxius duplicats, arxius grans, arxius poc usats i enviar informes a l’usuari que excedeixi la quota.
 
-![FSRM Quota Template](img/UD11_13.png)
+![FSRM Quota Template](img/UD11_15.png)
 
 Es poden definir llindars d’avís i llindars de bloqueig, així com definir accions a realitzar quan s’arribi a aquests llindars. Per exemple, enviar un correu electrònic a l’usuari i al administrador del sistema. Així com la generació d'informes.
 
-![FSRM Quota Template](img/UD11_14.png)
+![FSRM Quota Template](img/UD11_16.png)
 
 Per aplicar la quota a una carpeta concreta, anar a `Quota Management` i clicar sobre `Create Quota`. Seleccionar la carpeta i la quota template que s’ha creat anteriorment.
 
-![FSRM Create Quota](img/UD11_15.png)
+![FSRM Create Quota](img/UD11_17.png)
 
 Per provar la quota, es pot mirar de copiar un fitxer gran a la carpeta amb quota i veure com es genera l’avís i el bloqueig de l’accés.
 
-![FSRM Quota Test](img/UD11_16.png)
+![FSRM Quota Test](img/UD11_18.png)
 
 File Server Resource Manager també permet establir limitacions de tipus de fitxer (usa l'extensió de fitxer) i altres funcionalitats com eliminar del recurs compartit fitxers per antiguitat o que faci temps que no s’han utilitzat. També permet generar informes sobre l’ús del recurs compartit i sobre els fitxers que conté.
 
@@ -128,11 +128,13 @@ Definirem una nova GPO i la vincularem a l'OU on hi ha els usuaris que volem que
 
 A la GPO anirem a `User Configuration` -> `Preferences` -> `Windows Settings` -> `Drive Maps`. Clicar amb el botó dret i seleccionar `New` -> `Mapped Drive`.
 
-![Drive Maps](img/UD11_17.png)
+![Drive Maps](img/UD11_19.png)
+
+![Drive Maps](img/UD11_20.png)
 
 Un cop aplicada la GPO, quan l'usuari iniciï sessió, el recurs compartit es maparà automàticament a l'explorador de fitxers.
 
-![Drive Maps](img/UD11_18.png)
+![Drive Maps](img/UD11_21.png)
 
 ## Redirecció de carpetes
 
@@ -146,11 +148,11 @@ La redirecció de carpetes es fa implementant una GPO i configurant la redirecci
 
 Es poden redirigir part de les carpetes del perfil o totes, i es poden definir opcions de redirecció per a cada carpeta.
 
-![Folder Redirection](img/UD11_19.png)
+![Folder Redirection](img/UD11_22.png)
 
 Per cada carpeta que es vulgui redirigir, s'indica on, sent la carpeta personal de l'usuari l'opció més senzilla.
 
-![Folder Redirection](img/UD11_20.png)
+![Folder Redirection](img/UD11_23.png)
 
 D'aquesta manera, podem prescindir dels perfils mòbils i redirigir aquelles carepetes com Documents, Desktop, Pictures, etc. a un recurs compartit del servidor.
 
@@ -160,4 +162,12 @@ Un problema en entorns on els usuaris canvien sovint d'equip, és que els perfil
 
 Per evitar això, podem aplicar una GPO que esborri els perfils després de x temps sense accés. Per fer-ho, a la GPO anirem a `Computer Configuration` -> `Policies` -> `Administrative Templates` -> `System` -> `User Profiles`. Clicar sobre `Delete user profiles older than a specified number of days on system restart` i habilitar-la indicant el nombre de dies.
 
-![Delete user profiles](img/UD11_21.png)
+![Delete user profiles](img/UD11_24.png)
+
+## Enllaços d'interès
+
+- [RDR IT. Windows Server 2025: Sharing a folder](https://rdr-it.com/en/windows-server-2025-sharing-a-folder/)
+
+- [RDR. IT. Share a folder in PowerShell](https://rdr-it.com/en/share-a-folder-in-powershell/)
+
+- [Microsoft Learn. Configure Folder Redirection using Group Policy](https://learn.microsoft.com/en-us/windows-server/storage/folder-redirection/folder-redirection-using-group-policy)
