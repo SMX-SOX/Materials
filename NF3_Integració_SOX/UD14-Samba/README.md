@@ -1,6 +1,6 @@
 # UD 14. Servidor Samba
 
-RA6. Configura un servidor Samba per compartir recursos amb clients Windows, interpretant especificacions i aplicant eines del sistema.
+RA6. Realitza tasques d'integració de sistemes operatius lliures i propietaris, descrivint els avantatges de compartir recursos i instal·lant programari específic.
 
 Durada aproximada: 18 hores
 
