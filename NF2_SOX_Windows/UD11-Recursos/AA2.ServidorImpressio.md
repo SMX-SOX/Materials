@@ -48,9 +48,18 @@ Un cop instal·lat el rol, s'accedeix a la consola de "Gestió d'impressores" o 
 
 ![Gestió d'impressores](./img/UD11_)
 
-Un cop fet això, ens apareixerà a la llista d'impressores disponibles.
+Un dels avantatges de tenir un servidor d’impressió, és que poden establir restriccions sobre les impressores.
 
-![Impressora PDF24](./img/UD11_)
+### Creació de cues d'impressió
+
+Una cua d'impressió permet gestionar els treballs d'impressió que s'enviin a diferents impressores, d'aquesta manera els usuaris envien el treball a una "impressora única", i després les impressores reals es van repartint la càrrega d'impressió, això ens aporta alta disponibilitat i menys temps d'espera, sobretot en entorns grans.
+
+Per habilitar la cua, seleccionem la primera de les impressores i a Propietats anem a ports.
+Seleccionem Enable Printer pooling i afegim el port 2 on veiem que apareix la segona impressora.
+
+### Desplegament d'impressores amb GPO
+
+Per tal que els clients puguin usar les impressores, cal que la tinguin mapejada. Es pot fer manualment a l’equip, però des del punt de vista de tècnics de sistemes, el més adient és fer un desplegament via GPO. Via GPO podem decidir a quina OU o grups despleguem la impressora.
 
 ## Enllaços d'interès
 
