@@ -2,7 +2,7 @@
 
 En aquest darrer bloc del curs veurem com integrar diferents sistemes operatius dins d'una mateixa xarxa, permetent així una major interoperabilitat i eficàcia en la gestió dels recursos.
 
-Durada estimada: 24 hores
+Durada estimada: 22 hores
 
 ## 📚 Índex de continguts
 
@@ -10,8 +10,6 @@ Durada estimada: 24 hores
    - Integració d'equips Linux o macOS en un entorn de Directori Actiu (Active Directory) de Windows, permeten l'autenticació centralitzada i l'accés a recursos compartits.
 2. [**UD14 - Servidors de recursos Linux**](./UD14-ServidorsLinux/README.md)
    - Ús de servidors de recursos Linux per tal que siguin consumits per equips clients Widows.
-3. [**UD15 - Directori actiu amb Linux**](./UD15-DirectoriActiuLinux/README.md)
-   - Creació d'entorns de directori actiu usant servidor Linux com control·ladors de domini.
 
 ## Introducció
 

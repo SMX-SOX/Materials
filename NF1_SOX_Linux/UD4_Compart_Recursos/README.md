@@ -2,7 +2,7 @@
 
 RA4. Gestiona els recursos compartits del sistema, interpretant especificacions i determinant nivells de seguretat.
 
-Durada prevista: 12 hores
+Durada prevista: 16 hores
 
 ## Introducció a la unitat
 

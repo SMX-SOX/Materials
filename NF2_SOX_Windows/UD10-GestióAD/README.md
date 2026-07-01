@@ -2,7 +2,7 @@
 
 RA3. Realitza tasques de gestió sobre dominis identificant necessitats i aplicant eines d'administració de dominis.
 
-Durada prevista: 8 hores
+Durada prevista: 12 hores
 
 ## Introducció
 

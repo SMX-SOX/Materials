@@ -2,7 +2,7 @@
 
 RA1. Instal·la sistemes operatius en xarxa descrivint-ne les característiques i interpretant-ne la documentació tècnica.
 
-Durada prevista: 2 hores
+Durada prevista: 4 hores
 
 Partim de la ISO d'Ubuntu Server que teniu disponible a la xarxa de l'escola. Si voleu descarregar-la a casa, podeu fer-ho des del web oficial d'Ubuntu: [https://ubuntu.com/download/server](https://ubuntu.com/download/server).
 

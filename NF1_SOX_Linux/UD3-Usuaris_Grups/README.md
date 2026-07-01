@@ -2,7 +2,7 @@
 
 RA2. Gestiona usuaris i grups de sistemes operatius en xarxa, interpretant especificacions i aplicant eines del sistema.
 
-Durada prevista: 4 hores
+Durada prevista: 8 hores
 
 ## Introducció
 

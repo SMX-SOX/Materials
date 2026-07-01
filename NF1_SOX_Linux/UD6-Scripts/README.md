@@ -2,7 +2,7 @@
 
 RA 5. Realitza tasques de monitorització i ús del sistema operatiu en xarxa, descrivint les eines utilitzades i identificant-ne les principals incidències
 
-Durada prevista: 8 hores
+Durada prevista: 12 hores
 
 ## Introducció
 

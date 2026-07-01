@@ -2,7 +2,7 @@
 
 Aquest nucli formatiu cobreix els fonaments dels sistemes operatius Linux, incloent la instal·lació, administració, gestió d'usuaris i grups, compartició de recursos, gestió avançada del sistema i scripting bàsic.
 
-Durada estimada: 38 hores
+Durada estimada: 52 hores
 
 ## 📚 Índex de continguts
 

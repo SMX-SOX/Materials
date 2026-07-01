@@ -2,7 +2,7 @@
 
 En aquest segon nucli formatiu treballarem amb el sistema operatiu Windows Server, explorant la seva instal·lació, la configuració de l'eina que l'ha convertit en un dels sistemes operatius més utilitzats en entorns empresarials, el directori actiu, així com la compartició de recursos.
 
-Durada estimada: 40 hores
+Durada estimada: 58 hores
 
 ## 📚 Índex de continguts
 

@@ -1,4 +1,8 @@
-# Integració client Linux en un Actiu Directory
+# UD 13. Integració client Linux en un Actiu Directory
+
+RA6. Integra un client Linux en un entorn de Directori Actiu, interpretant especificacions i aplicant eines del sistema.
+
+Durada prevista: 4 hores
 
 ## Introducció
 

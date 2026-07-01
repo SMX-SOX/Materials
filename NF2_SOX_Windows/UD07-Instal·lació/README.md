@@ -2,7 +2,7 @@
 
 RA1. Instal·la sistemes operatius en xarxa descrivint-ne les característiques i interpretant-ne la documentació tècnica.
 
-Durada prevista: 2 hores
+Durada prevista: 4 hores
 
 Partim de la ISO de Windows Server 2025 Evaluation que teniu disponible a la xarxa de l'escola. Si voleu descarregar-la a casa, podeu fer-ho des del web oficial de Microsoft: [https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2025).
 
