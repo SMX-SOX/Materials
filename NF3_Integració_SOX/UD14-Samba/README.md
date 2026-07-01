@@ -53,3 +53,142 @@ L’arxiu que permet configurar el servei és  `/etc/samba/smb.conf`.
     writable = yes
     valid users = %S
 ```
+
+Per començar a treballar amb Samba, és recomanble crear un arxiu des de zero, per tant, el primer que cal fer serà una còpia de seguretat de l’arxiu `/etc/samba/smb.conf`
+
+```bash
+sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.old
+```
+
+Per comprovar sil’arxiu de configuració té erros, executarem la comanda `testparm`.
+
+### Seccions arxiu smb.conf
+
+`[global`]: conté les variables que definiran la compartició de tots els recursos.
+
+`[homes`]: permet els usuaris remots accedir a les seves carpetes personals sempre i quan també siguin usuaris del sistema Linux.
+
+`[nom_recurs]`: defineix un recurs compartit (carpeta) en concret.
+
+`[printers]`: fa referència a la compartició d’impressores.
+
+#### Secció `[global`]
+
+Els paràmetres d’aquesta secció s’apliquen a tot el servidor:
+
+- host allow = ips permeses per connectar-se
+- workgroup per especificar el grup de treball
+- netbios name per indicar el nom del servidor
+- invalid users: per prohibir usuaris concrets.
+- security:
+  - user: valor per defecte. Validació a nivell usuari
+  - domain: validació a nivell domini.
+  - ads: validació a nivell de domini mitjançant Kerberos.
+
+### Paràmetres sobre les seccions
+
+- **comment**: comentari a mostrar amb el recurs compartit.
+- **public**: indiquem si el recurs és públic o privat.
+- **writeable**: si és d’escriptura equival read only = No.
+- **browseable**: si és examinable per qualsevol.
+- **guest ok**: permet accés convidat.
+- **guest only**: automàticament mapeja l’usuari al compte guest.
+- **force user / force group**: usuari i grup que utilitzen tots els usuaris a l’accedir al recurs.
+- **map to guest**: determina com es tracta una autenticació fallida.
+- **valid users**: llista usuaris que es poden connectar al servei, @ per indicar grup.
+- **write list**: defineix els usuaris que poden accedir amb permís d’escriptura.
+- **admin users**: usuaris que podran accedir com a superusuaris al recurs.
+- **directory mask**: permisos dels subdirectoris.
+- **create mask**: permisos dels arxius.
+- **veto files**: permet prohibir l’accés a determinats arxius.
+
+## Exemples de configuració
+
+### Exemple: Anònim només lectura
+
+```bash
+global]
+workgroup = DOCS
+netbios name = DOCS_SRV
+map to guest = bad user
+
+[data]
+comment = Documentation Samba Server
+path = /ruta de la carpeta
+guest ok= Yes
+read only = Yes
+```
+
+### Exemple: servidor amb carpetes personals
+
+```bash
+global]
+workgroup = DOCS
+netbios name = DOCS_SRV
+security = user
+map to guest = bad user
+
+[homes]
+comment = Home Directories
+valid users = %S
+read only = No
+browseable = No
+create mask = 0640
+directory mask = 0750
+```
+
+El recurs `[homes`] utilitza els detalls de l’usuari autenticat.
+
+El `create mask` i el `directory mask` especifiquen els permisos dels arxius i directoris creats.
+
+### Exemple: carpeta compartida
+
+```bash
+global]
+workgroup = DOCS
+netbios name = DOCS_SRV
+security = user
+map to guest = bad user
+
+[data]
+comment =Data
+force user = usuari_a_triar
+force group = users
+path = /ruta de la carpeta
+guest ok= Yes
+read only = No
+```
+
+Qualsevol arxiu col·locat a l’espai compartit, sense importar l’usuari, se li assigna la combinació usuari/grup que s’especifica amb els paràmetres `force`.
+
+## Permisos dels recursos
+
+Cal definir els permisos adequats per poder accedir després des dels clients. És bona idea crear una carpeta “arrel” on penjar els recursos compartits samba i que aquesta carpeta talli l'herència:
+
+```bash
+mkdir –p /srv/samba/share
+chown nobody:nogroup /srv/samba/share/
+chmod 0775 /srv/samba/share/
+```
+
+## Usuaris Samba
+
+Els usuaris locals del sistema Linux, no són per defecte, usuaris de Samba.
+Per agregar un usuari local a Samba:
+
+```bash
+smbpasswd –a usuari_local
+```
+
+Per crear un usuari Samba que no pugui accedir al servidor local ho haurem de fer nologin:
+
+```bash
+useradd –s /sbin/nologin nom_usuari
+smbpasswd –a nom_usuari
+```
+
+## Connexió des de client Windows
+
+Per connectar el client Windows utilitzant una credencial diferent de la de sessió, usarem “Conectar a unidad de red”.
+
+![Conectar a unidad de red](img/UD14_01.png)
