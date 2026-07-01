@@ -122,6 +122,6 @@ Si l’obrim podem veure tant l’usuari com l’objecte en concret que s’ha e
 
 ## Enllaços d’interès
 
-- [Microsoft Learn:Configure Performance Monitoring ](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/configure-performance-monitoring)
+- [Microsoft Learn:Configure Performance Monitoring](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/configure-performance-monitoring)
 
 - [Enabling File Share Auditing in Active Directory (Windows Server)](https://medium.com/@basharraed/enabling-file-share-auditing-in-active-directory-windows-server-7f71755fe8b7)
