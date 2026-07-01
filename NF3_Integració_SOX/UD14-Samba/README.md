@@ -192,3 +192,17 @@ smbpasswd –a nom_usuari
 Per connectar el client Windows utilitzant una credencial diferent de la de sessió, usarem “Conectar a unidad de red”.
 
 ![Conectar a unidad de red](img/UD14_01.png)
+
+Observeu que si al explorador d’arxius indiqueu directament el nom del servidor o la seva IP, només apareixeran els recursos marcats com *browseables*.
+
+![Recursos Samba](img/UD14_02.png)
+
+## Enllaços d'interès
+
+- [Documentació de Samba](https://www.samba.org/samba/docs/)
+
+- [Wiki Samba](https://wiki.samba.org/index.php/Main_Page)
+
+- [Ubunlog. Com implementar un senzill Servidor Samba a Ubuntu 24.04](https://ca.ubunlog.com/servidor-samba-ubuntu-24-04-part-1/)
+
+- [Ubunlog. ¿Cómo implementar un completo Servidor Samba en Ubuntu 24.04?](https://ubunlog.com/completo-servidor-samba-ubuntu-parte-2)

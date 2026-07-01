@@ -10,6 +10,8 @@ Els entorns de Directori Actiu ofereixen una manera centralitzada de gestionar u
 
 Ubuntu és una de les distribucions que més facilita aquesta possibilitat així que d’altres derivades com Zorin també ho permeten de forma molt senzilla. Amb la versió 22.04 es va presentar Adsys que requereix la subscripció a [Ubuntu Pro](https://ubuntu.com/pro) i que inclou suport per GPOs.
 
+A la resta de distribucions, com Zorin, caldrà fer servir eines com `sssd` per integrar-se amb el Directori Actiu.
+
 ## Activitat
 
 Com a controlador de domini (DC) usem un Windows Server 2025 i com equip client un Zorin Core. Tots dos equips s'han de poder veure, bé configurant-se en "Xarxa NAT" si es troben al mateix equip físic o bé usant "Adaptador pont" si es troben en equips diferents.
@@ -96,3 +98,9 @@ sudo apt update && sudo apt install python3-smbc
 ![Accés a unitats de xarxa](./img/UD13_06.png)
 
 ![Accés a unitats de xarxa](./img/UD13_07.png)
+
+## Enllaços d'interès
+
+- [Documentació Zorin: join active directory](https://help.zorin.com/docs/system-software/join-active-directory-ldap/)
+
+- [Matt Glass: Ubuntu Domain Join](https://mattglass-it.com/ubuntu-domain-join/)
