@@ -122,7 +122,7 @@ read only = Yes
 ### Exemple: servidor amb carpetes personals
 
 ```bash
-global]
+[global]
 workgroup = DOCS
 netbios name = DOCS_SRV
 security = user
@@ -144,7 +144,7 @@ El `create mask` i el `directory mask` especifiquen els permisos dels arxius i d
 ### Exemple: carpeta compartida
 
 ```bash
-global]
+[global]
 workgroup = DOCS
 netbios name = DOCS_SRV
 security = user
@@ -157,19 +157,37 @@ force group = users
 path = /ruta de la carpeta
 guest ok= Yes
 read only = No
+
+[privat]
+comment = Private Directory
+path = /ruta de la carpeta privada
+valid users = @grup_a_triar
+write list = @grup_a_triar
+browsable = yes
+writable = yes
+guest ok = no
+force create mode = 0770
+force directory mode = 0770
+force group = grup_a_triar
+
 ```
 
 Qualsevol arxiu col·locat a l’espai compartit, sense importar l’usuari, se li assigna la combinació usuari/grup que s’especifica amb els paràmetres `force`.
+
+Al recurs `privat`, només els usuaris del grup especificat podran accedir-hi i amb permisos d’escriptura.
 
 ## Permisos dels recursos
 
 Cal definir els permisos adequats per poder accedir després des dels clients. És bona idea crear una carpeta “arrel” on penjar els recursos compartits samba i que aquesta carpeta talli l'herència:
 
 ```bash
-mkdir –p /srv/samba/share
-chown nobody:nogroup /srv/samba/share/
-chmod 0775 /srv/samba/share/
+sudo mkdir -pv/srv/samba/share/{data/{docs,pics},public}
+sudo chown -R nobody:nogroup /srv/samba/share
+sudo chmod -R 2770 /srv/samba/share/data
+sudo chmod -R 2775 /srv/samba/share/public
 ```
+
+>**Nota:* els primer 2 dels permisos serveix per indicar que els arxius i carpetes creats dins d’aquesta carpeta heretaran el grup del directori pare.
 
 ## Usuaris Samba
 

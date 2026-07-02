@@ -53,3 +53,5 @@ Un cop acabat el procés d'instal·lació, el sistema es reiniciarà automàtica
 ![Accés a l'escriptori de Windows Server 2025](./img/instalacio_windows_4.png)
 
 Abans de començar a configurar el servidor, procedirem a **pausar les actualitzacions** perquè sinó ens començarà a descarregar actualitzacions i això farà que el procés d'instal·lació de rols i característiques sigui molt més lent. Per fer-ho, anirem a **Settings > Update & Security > Windows Update** i pausarem el màxim temps que ens permeti.
+
+![Pausar actualitzacions](./img/instalacio_windows_5.png)
