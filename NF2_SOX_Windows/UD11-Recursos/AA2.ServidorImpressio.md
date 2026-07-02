@@ -6,7 +6,7 @@ A una organització un ús eficient de les impressores és fonamental per a la p
 
 En aquesta activitat veurem com configurar un servidor d'impressió en un entorn de Directori Actiu, com crear cues d'impressió amb múltiples impressores i com desplegar les impressores als usuaris de manera eficient mitjançant polítiques de grup.
 
-## Pas previ: instal·lació impressora en el servidor
+## Instal·lació impressores en el servidor
 
 Per agregar una impressora, cal anar "Setting", "Devices", "Printers & Scanners" i fent botó dret seleccionar "Add Printer". Es pot afegir una impressora local o de xarxa, i es poden instal·lar els controladors necessaris.
 
@@ -30,6 +30,17 @@ Un cop fet això, ens apareixerà a la llista d'impressores disponibles.
 
 ![Impressora PDF24](./img/UD11_28.png)
 
+### Creació de cues d'impressió
+
+Una cua d'impressió permet gestionar els treballs d'impressió que s'enviin a diferents impressores, d'aquesta manera els usuaris envien el treball a una "impressora única", i després les impressores reals es van repartint la càrrega d'impressió, això ens aporta alta disponibilitat i menys temps d'espera, sobretot en entorns grans.
+
+Per habilitar la cua:
+
+- Se selecciona la primera de les impressores i a Propietats anem a ports.
+- Activem `Enable Printer pooling` i s'afegeix el port corresponent que apareix la segona impressora.
+
+A la guia indicada anteriorment, teniu tot el procés de creació de la cua d'impressió amb les dues impressores virtuals PDF24.
+
 ## Compartició bàsica d'impressores
 
 La compartició bàsica usant el protocol SMB, es pot usar tant en entorns de servidor-client, com en entorns de grup de treball, on un equip Windows 10 o 11 comparteix una impressora amb altres equips de la xarxa. Per compartir una impressora, s'accedeix a les opcions "Impressores i escàners" del sistema operatiu, es selecciona la impressora que es vol compartir i se selecciona l'opció "Administrar".
@@ -37,6 +48,8 @@ La compartició bàsica usant el protocol SMB, es pot usar tant en entorns de se
 A continuació, es fa clic a "Propietats de la impressora" i es selecciona la pestanya "Compartir". Aquí es marca l'opció "Comparteix aquesta impressora" i es pot assignar un nom de compartició que serà visible per als altres equips de la xarxa.
 
 ![Compartició d'impressores](./img/UD11_29.png)
+
+Un cop compartida, en els clients apareixerà la impressora compartida a la llista d'impressores disponibles, i podran enviar treballs d'impressió a través de la xarxa.
 
 ## Servidor d'impressió
 
@@ -52,24 +65,31 @@ Un cop instal·lat el rol, s'accedeix a la consola de "Gestió d'impressores" o 
 
 Un dels avantatges de tenir un servidor d’impressió, és que poden establir restriccions sobre les impressores.
 
-### Creació de cues d'impressió
-
-Una cua d'impressió permet gestionar els treballs d'impressió que s'enviin a diferents impressores, d'aquesta manera els usuaris envien el treball a una "impressora única", i després les impressores reals es van repartint la càrrega d'impressió, això ens aporta alta disponibilitat i menys temps d'espera, sobretot en entorns grans.
-
-Per habilitar la cua, seleccionem la primera de les impressores i a Propietats anem a ports.
-Seleccionem Enable Printer pooling i afegim el port 2 on veiem que apareix la segona impressora.
-
-A la [guia](https://github.com/cfugarolas/activitats/blob/main/activitat3/pdf24.md) teniu l'explicació de com crear la cua, en aquest cas, de dos impressores virtuals PDF24 al Server 2025.
-
 ### Desplegament d'impressores amb GPO
 
 Per tal que els clients puguin usar les impressores, cal que la tinguin mapejada. Es pot fer manualment a l’equip, però des del punt de vista de tècnics de sistemes, el més adient és fer un desplegament via GPO. Via GPO podem decidir a quina OU o grups despleguem la impressora.
+
+Ho farem instal·lant una nova impressora, però en aquest cas, des del servidor d’impressió, triant l'opció "Add Printer".
 
 ![Desplegament d'impressores amb GPO](./img/UD11_32.png)
 
 ![Desplegament d'impressores amb GPO](./img/UD11_33.png)
 
-En aquest cas, hem creat una GPO per tot el domini, però es pot fer per a una OU concreta. Un cop aplicada i actualitzada la GPO al client, aquest veurà la impressora disponible a la llista d'impressores.
+Per instal·lar la impressora ja ens surt l'opció "Install a new driver" i seleccionem el model, si es disposa dels drivers corresponents els usaríem, sinó triem un model genèric.
+
+![Desplegament d'impressores amb GPO](./img/UD11_34.png)
+
+Ara ja es pot desplegar als clients usant una GPO, d'aquesta manera, a diferència del punt anterior, el client no cal que cerqui la impressora, sinó que li apareixerà automàticament a la llista d'impressores disponibles.
+
+![Desplegament d'impressores amb GPO](./img/UD11_35.png)
+
+En aquest exemple, hem creat una GPO per tot el domini, però es pot fer per a una OU concreta.
+
+Seleccionem la GPO, triem "User Configuration", tot i que també es pot fer el desplegament per "Computer Configuration" i cliquem a "Add":
+
+![Desplegament d'impressores amb GPO](./img/UD11_36.png)
+
+Ja només quedarà forçar l'aplicació de la GPO als clients i comprovar que la impressora apareix a la llista d'impressores disponibles.
 
 ## Enllaços d'interès
 
