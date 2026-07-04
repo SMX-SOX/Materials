@@ -80,7 +80,7 @@ Una característica de Server Manager és que ens permet instal·lar rols i cara
 
 ![Instal·lació rol AD DS](./img/desplegament_ad_08.png)
 
-El sistema marca per defecte els característiques (features) associades al rol que es vol instal·lar, com ara el servei DNS i altres eines d'administració. Acceptarem les opcions per defecte i farem clic a "Next" fins arribar a la pantalla de resum, on farem clic a "Install" per iniciar la instal·lació del rol.
+El sistema marca per defecte els característiques (features) associades al rol que es vol instal·lar, **deixeu la selecció per defecte**.
 
 ![Instal·lació rol AD DS](./img/desplegament_ad_09.png)
 
