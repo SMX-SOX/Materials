@@ -249,3 +249,11 @@ Als sistemes GNU/Linux, les configuracions solen fer a través de fitxers de tex
 - `/etc/shadow`: Conté informació sobre les contrasenyes dels usuaris, com la contrasenya xifrada, la data de l'últim canvi de contrasenya i les polítiques de caducitat de la contrasenya.
 
 A més, quan instal·lem serveis addicionals, aquests solen crear els seus propis fitxers de configuració dins del directori `/etc/`, amb el nom del servei o aplicació. Per exemple, si instal·lem el servidor web Apache, es crearan fitxers de configuració dins del directori `/etc/apache2/`.
+
+## Enllaços d'interès
+
+- [The Linux Journey](https://labex.io/linuxjourney)
+
+- [Manz.dev: terminal de linux](https://terminaldelinux.com/terminal/)
+
+- [Adictos a Linux: 5 Comandos para Gestionar la Hora del Sistema en Linux](https://adictosalinux.com/comandos-gestionar-hora-sistema-linux/)
