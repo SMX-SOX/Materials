@@ -25,32 +25,7 @@ Es tracta d'una arquitectura on un servidor centralitzat proporciona serveis i r
 - **Servidor**: És l'ordinador que gestiona els recursos i serveis de la xarxa. Pot ser un servidor de fitxers, un servidor d'impressió, un servidor de correu electrònic, etc.
 - **Client**: Són els ordinadors que sol·liciten accés als recursos i serveis proporcionats pel servidor. Els clients poden ser ordinadors de sobretaula, portàtils, dispositius mòbils, etc.
 
-```mermaid
-
-flowchart TD
-    %% Node Central (Servidor)
-    Servidor[Servidor]
-
-    %% Nodes Perifèrics (Clients)
-    Client1[Client]
-    Client2[Client]
-    Client3[Client]
-    Client4[Client]
-    Client5[Client]
-
-    %% Connexions
-    Servidor --- Client1
-    Servidor --- Client2
-    Servidor --- Client3
-    Servidor --- Client4
-    Servidor --- Client5
-
-    classDef servidor fill:#f9f9f9,stroke:#333,stroke-width:2px
-    classDef client fill:#fff,stroke:#333,stroke-width:1px
-    class Servidor servidor
-    class Client1,Client2,Client3,Client4,Client5 client
-
-```
+![Arquitectura client-servidor](media/client-servidor.png)
 
 Com a qualsevol model tecnològic, el model client-servidor té avantatges i desavantatges:
 
