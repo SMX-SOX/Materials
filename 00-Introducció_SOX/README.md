@@ -45,13 +45,10 @@ flowchart TD
     Servidor --- Client4
     Servidor --- Client5
 
-    %% Estils per fer-ho més clar (opcional)
-    style Servidor fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style Client1 fill:#fff,stroke:#333,stroke-width:1px
-    style Client2 fill:#fff,stroke:#333,stroke-width:1px
-    style Client3 fill:#fff,stroke:#333,stroke-width:1px
-    style Client4 fill:#fff,stroke:#333,stroke-width:1px
-    style Client5 fill:#fff,stroke:#333,stroke-width:1px
+    classDef servidor fill:#f9f9f9,stroke:#333,stroke-width:2px
+    classDef client fill:#fff,stroke:#333,stroke-width:1px
+    class Servidor servidor
+    class Client1,Client2,Client3,Client4,Client5 client
 
 ```
 
@@ -103,7 +100,4 @@ Per una banda, el núvol ofereix avantatges com la flexibilitat, l'escalabilitat
 
 Als següents diagrames es mostra la diferència entre un model de servidor tradicional i un model de núvol:
 
-<p align="center">
-  <img src="media/on-premises.png" width="48%" />
-  <img src="media/cloud.png" width="48%" />
-</p>
+![on-premises vs cloud](media/on-premisesvscloud.png)
