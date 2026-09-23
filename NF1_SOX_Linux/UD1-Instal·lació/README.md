@@ -55,3 +55,6 @@ Quan acabi la instal·lació, veureu una pantalla que us demanarà reiniciar el 
 Un cop reiniciat el sistema, tenim el nostre servidor llest per a ser usat.
 
 ![Primer inici de sessió](media/02-installed.png)
+
+Ara cal comprovar la configuració de xarxa fent `ip a`. Com hem de tenir dues interfaces (xarxa NAT i host-only), apareixeran dues IPs que s'han assignat automàticament.
+
