@@ -35,8 +35,8 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 
 **Recordeu** desmarcar "Proceed with Unattended Installation".
 
-> La "unantetended installation" és una instal·lació automatitzada que no requereix intervenció de l'usuari, ideal per a entorns de producció per automatitzar la tasca i reduir errors humans.
->
+> La "Unantetended Installation" és una instal·lació automatitzada que no requereix intervenció de l'usuari, ideal per a entorns de producció per automatitzar la tasca i reduir errors humans. VirtualBox permet fer una instal·lació d'aquest tipus, configurant prèviament les opcions a "Set Up Guest Unattended Installation".
+
 >Tot i que en alguna activitat veurem com usar aquesta funcionalitat, en aquesta primera instal·lació la desactivarem per tal de poder veure tot el procés i entendre què passa a cada pas.
 
 - **Idioma**: trieu l'idioma que preferiu, serà l'idioma dels missatges del sistema, tot i que els arxius de configuració i els missatges d'error de la majoria dels serveis estaran en anglès.
@@ -50,7 +50,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 
 Les següents pantalles no cal marcar res, ja que instal·larem sobre una VM i no volem instal·lar cap servei o paquet d'inici.
 
-Quan acabi la instal·lació, veureu una pantalla que us demanarà reiniciar el sistema. Feu clic a "Reinicia ara" i traieu la ISO del lector virtual de la màquina virtual prement "ENTER".
+Quan acabi la instal·lació, veureu una pantalla que us demanarà reiniciar el sistema. Feu clic a "Reinicia ara" i **traieu la ISO del lector virtual de la màquina virtual prement "ENTER"** quan us hodemani.
 
 Un cop reiniciat el sistema, tenim el nostre servidor llest per a ser usat.
 
@@ -58,3 +58,25 @@ Un cop reiniciat el sistema, tenim el nostre servidor llest per a ser usat.
 
 Ara cal comprovar la configuració de xarxa fent `ip a`. Com hem de tenir dues interfaces (xarxa NAT i host-only), apareixeran dues IPs que s'han assignat automàticament.
 
+```bash
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:91:e2:a3 brd ff:ff:ff:ff:ff:ff
+    altname enx08002791e2a3
+    inet 10.0.2.12/24 metric 100 brd 10.0.2.255 scope global dynamic enp0s3
+       valid_lft 560sec preferred_lft 560sec
+    inet6 fe80::a00:27ff:fe91:e2a3/64 scope link proto kernel_ll
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:c4:d8:19 brd ff:ff:ff:ff:ff:ff
+    altname enx080027c4d819
+    inet 192.168.227.4/24 metric 100 brd 192.168.227.255 scope global dynamic enp0s8
+       valid_lft 560sec preferred_lft 560sec
+    inet6 fe80::a00:27ff:fec4:d819/64 scope link proto kernel_ll
+       valid_lft forever preferred_lft forever
+```
