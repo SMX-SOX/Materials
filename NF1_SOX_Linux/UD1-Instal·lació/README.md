@@ -36,7 +36,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 **Recordeu** desmarcar "Proceed with Unattended Installation".
 
 > La "Unantetended Installation" és una instal·lació automatitzada que no requereix intervenció de l'usuari, ideal per a entorns de producció per automatitzar la tasca i reduir errors humans. VirtualBox permet fer una instal·lació d'aquest tipus, configurant prèviament les opcions a "Set Up Guest Unattended Installation".
-
+>
 >Tot i que en alguna activitat veurem com usar aquesta funcionalitat, en aquesta primera instal·lació la desactivarem per tal de poder veure tot el procés i entendre què passa a cada pas.
 
 - **Idioma**: trieu l'idioma que preferiu, serà l'idioma dels missatges del sistema, tot i que els arxius de configuració i els missatges d'error de la majoria dels serveis estaran en anglès.
