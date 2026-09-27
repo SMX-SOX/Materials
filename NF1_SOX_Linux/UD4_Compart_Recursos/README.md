@@ -27,6 +27,6 @@ En aquesta unitat veurem com compartir carpetes mitjançant el protocol `NFS` i 
 
 ## Taula de continguts
 
-- [Compartició de carpetes amb NFS](./NFS/README.md)
+- [Compartició de carpetes amb NFS](./A1-NFS.md)
 
-- [Compartició d'impressores amb CUPS](./CUPS/README.md)
+- [Compartició d'impressores amb CUPS](./A2-CUPS.md)
