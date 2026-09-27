@@ -8,7 +8,7 @@ En aquesta unitat estudiarem el protocol `NFS`, deixant Samba per més endanvant
 
 NFS (Network File System) és un protocol de compartició de fitxers que permet als usuaris accedir a fitxers i directoris en un servidor remot com si fossin locals. Malgrat el seu nom, no és un sistema de fitxers en si mateix, sinó un protocol que permet muntar sistemes de fitxers remots a la màquina local.
 
-Aquest protocol va ser desenvolupat per Sun Microsystems a principis dels anys 80 per a permetre la compartició de fitxers entre sistemes Unix, sent adoptat àmpliament en entorns Linux i altres sistemes operatius com els derivats de BSD i macOS. Fins i tot Windows ofereix suport per a NFS tant a nivell de servidor com de client, encara que no és tan comú com el protocol SMB.
+Aquest protocol va ser desenvolupat per Sun Microsystems a principis dels anys 80 per a permetre la compartició de fitxers entre sistemes Unix, sent adoptat àmpliament en entorns Linux i altres sistemes operatius com els derivats de BSD i macOS. Fins i tot Windows ofereix suport per a NFS tant a nivell de servidor com de client, encara que no és tan comú com el protocol SMB. Es troba definit a la RFC 1094.
 
 El seu funcionament es basa a les següents característiques:
 
@@ -143,11 +143,13 @@ Com el que importa és el UID i GID, i no el nom d'usuari, els permisos d'accés
 | RW    | 1001 (joan)     | 1001 (pep)       |
 | RO    | 1002 (bob)      | 1310 (joan)      |
 
-És per aquest motiu que NFS en entorns corporatius requereix un sistema d'usuaris centralitzat, com ara LDAP o Active Directory, per garantir que els UID i GID siguin coherents a través de tots els sistemes que accedeixen als recursos compartits.
+És per aquest motiu que NFS en entorns corporatius requereix un sistema d'usuaris centralitzat, com ara **LDAP** o **Active Directory**, per garantir que els UID i GID siguin coherents a través de tots els sistemes que accedeixen als recursos compartits. És l'acció necessària si volem definir perfils mòbils d'usuari amb clients Linux.
 
 Per entorns més petits, pot ser suficient assegurar-se que els UID i GID coincideixin manualment entre el servidor i els clients NFS, per exemple usant scripts per automatitzar la creació d'usuaris i grups amb els mateixos UID i GID a tots els sistemes.
 
-En qualsevol cas, fixeu-vos que si necessiteu donar permisos diferents a diferents grups, el sistema UGO no és suficient, i caldrà usar ACLs (Access Control Lists) per establir permisos més detallats.
+En qualsevol cas, fixeu-vos que si necessiteu donar permisos diferents a diferents grups, el sistema UGO no és suficient, i caldrà usar ACLs (Access Control Lists) per establir permisos més detallats, definint permisos específics per a usuaris i grups concrets, independentment de la seva relació amb el propietari del fitxer o directori.
+
+> **Nota**: Com a curiositat, Windows Server permet crear un servidor NFS basat en els usuaris del directori actiu, de manera que els UID i GID es poden mapear amb els usuaris i grups de Windows. Això permet una integració més fluida entre entorns Linux i Windows quan es comparteixen recursos mitjançant NFS. De la mateixa manera, els clients Windows incorporen dins les característique opcionals un client NFS.
 
 ## Instal·lació i configuració d'un servidor NFS
 
@@ -157,7 +159,7 @@ Per aquest laboratori, necessitarem un servidor NFS (Ubuntu Server) i un client 
 
 Abans de començar amb els escenaris, cal instal·lar els paquets necessaris i assegurar-nos que les màquines es comuniquen.
 
-#### Instal·lació servei NFS
+### Instal·lació servei NFS
 
 ```bash
 # Instal·lar el servidor NFS
@@ -165,7 +167,7 @@ sudo apt update
 sudo apt install nfs-kernel-server -y
 ```
 
-#### Instal·lació client NFS
+### Instal·lació client NFS
 
 ```bash
 # Instal·lar el client NFS
@@ -173,11 +175,11 @@ sudo apt update
 sudo apt install nfs-common -y
 ```
 
-#### Exemple senzill: Compartició bàsica d'una carpeta
+### Exemple senzill: Compartició bàsica d'una carpeta
 
 Compartim una carpeta per un usuari i grup concret.
 
-##### Configuració al servidor
+#### Configuració al servidor
 
 Creació de l'usuari, el grup i la carpeta compartida amb els permisos adequats:
 
@@ -207,7 +209,7 @@ sudo exportfs -a
 sudo systemctl restart nfs-kernel-server
 ```
 
-##### Configuració al client
+#### Configuració al client
 
 Cal crear l'usuari i el grup amb els mateixos UID i GID que al servidor per assegurar la coherència dels permisos:
 
@@ -226,7 +228,7 @@ sudo mkdir -p /mnt/compartit
 sudo mount -t nfs servidor_nfs:/srv/nfs/compartit /mnt/compartit
 ```
 
-Comprovem que l'usuari creatpot accedir a la carpeta compartida i crear fitxers dins d'ella:
+Comprovem que l'usuari creat pot accedir a la carpeta compartida i crear fitxers dins d'ella:
 
 ```bash
 # Canviem a l'usuari creat
@@ -270,4 +272,10 @@ Si ara iniceu sessió amb l'usuari creat a Zorin OS, podreu accedir a la carpeta
 
 ## Enllaços d'interès
 
+- [RFC 1094: NFS: Network File System Protocol specification](https://www.rfc-editor.org/info/rfc1094/)
+
 - [LinuxConfig.org: How to Setup NFS Server and Client on Ubuntu 26.04](https://linuxconfig.org/how-to-setup-nfs-server-and-client-on-ubuntu-26-04)
+
+- [Ubuntu Server Documentation: Network File System (NFS)](https://ubuntu.com/server/docs/how-to/networking/install-nfs/)
+
+- [Stack Harbor. *NFSv4 ACLs and permissions: making fine-grained access work end to end*](https://stackharbor.com/en/knowledge-base/nfs-v4-acls-permissions/)

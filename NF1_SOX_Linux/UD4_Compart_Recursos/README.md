@@ -6,7 +6,7 @@ Durada prevista: 16 hores
 
 ## Introducció a la unitat
 
-La compartició de recursos en xarxa és una de les utilitats o raons principals perquè els sistemes operatius es connectin en xarxa.
+La compartició de recursos en xarxa és una de les utilitats o raons principals perquè els sistemes operatius es connectin en xarxa. A l'inici dels ordinadors personals, si es volia imprimir calia que o bé cada ordinador tingués la seva pròpia impressora, o bé que anéssim a imprimir a l'ordinador portant el fitxer a imprimir en un disquet. En el cas dels fitxers, calia distribuir l'arxiu amb disquets i emmagatzar-lo en cada ordinador.
 
 Els poden compartir en xarxa tots tipus de recursos, encara que els recursos més habituals són:
 
@@ -23,4 +23,4 @@ Quins avantages té la compartició de recursos?
 
 - **Consistència de dades**, ja que només hi ha una còpia del recurs compartit, i tots els usuaris accedeixen a la mateixa versió. En un entorn amb múltiples còpies d'un mateix recurs, és fàcil que es produeixin inconsistències i conflictes entre les diferents versions.
 
-En aquesta unitat veurem com compartir carpetes mitjançant el protocol NFS i impressores mitjançant CUPS. Quan veiem la integració de Linux amb Windows, veurem com compartir carpetes i impressores mitjançant Samba.
+En aquesta unitat veurem com compartir carpetes mitjançant el protocol `NFS` i impressores mitjançant `CUPS`. Quan veiem la integració de Linux amb Windows, veurem com compartir carpetes i impressores mitjançant `Samba`, que és un servei basat en el protocol SMB/CIFS, molt més orientat a la interoperabilitat entre sistemes operatius diferents.
