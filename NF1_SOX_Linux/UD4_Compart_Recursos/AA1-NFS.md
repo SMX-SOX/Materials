@@ -80,11 +80,11 @@ ls -l carpeta
 
 Els permisos d'accés es representen amb tres bits per a cada tipus d'usuari, que indiquen si tenen permís de lectura (r), escriptura (w) i execució (x). D'aquesta manera, els permisos es poden expressar de la següent manera:
 
-| Permís  | Significat |
-|---------|------------|
-| r       | Permís de lectura: l'usuari pot llegir el contingut del fitxer o llistar el contingut del directori. |
+| Permís  | Significat                                                                                                       |
+|---------|------------                                                                                                      |
+| r       | Permís de lectura: l'usuari pot llegir el contingut del fitxer o llistar el contingut del directori.             |
 | w       | Permís d'escriptura: l'usuari pot modificar el contingut del fitxer o afegir/eliminar fitxers dins del directori.|
-| x       | Permís d'execució: l'usuari pot executar el fitxer o accedir al directori.|
+| x       | Permís d'execució: l'usuari pot executar el fitxer o accedir al directori.                                       |
 
 El permís d'accés per cada tipus d'usuari es pot representar amb una combinació de tres bits, on cada bit correspon a un permís específic. Per exemple, els permisos `rwx` es representen com `111` en binari, mentre que els permisos `rw-` es representen com `110`. Aquests permisos es poden expressar en forma octal, on cada combinació de tres bits es converteix en un dígit octal (0-7).
 
