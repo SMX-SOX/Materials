@@ -24,3 +24,9 @@ Quins avantages té la compartició de recursos?
 - **Consistència de dades**, ja que només hi ha una còpia del recurs compartit, i tots els usuaris accedeixen a la mateixa versió. En un entorn amb múltiples còpies d'un mateix recurs, és fàcil que es produeixin inconsistències i conflictes entre les diferents versions.
 
 En aquesta unitat veurem com compartir carpetes mitjançant el protocol `NFS` i impressores mitjançant `CUPS`. Quan veiem la integració de Linux amb Windows, veurem com compartir carpetes i impressores mitjançant `Samba`, que és un servei basat en el protocol SMB/CIFS, molt més orientat a la interoperabilitat entre sistemes operatius diferents.
+
+## Taula de continguts
+
+- [Compartició de carpetes amb NFS](./NFS/README.md)
+
+- [Compartició d'impressores amb CUPS](./CUPS/README.md)
