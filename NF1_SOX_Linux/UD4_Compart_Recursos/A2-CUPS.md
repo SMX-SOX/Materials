@@ -99,4 +99,4 @@ I al servidor els PDF generats es poden trobar a la carpeta de sortida configura
 ## Enllaços d'interès
 
 - [Documentació oficial de CUPS](https://www.cups.org/doc/)
-- [Ubuntu Server documentation](https://ubuntu.com/server/how-to/networking/cups-print-server)
+- [Ubuntu Server documentation](https://ubuntu.com/server/docs/how-to/networking/cups-print-server/)
