@@ -41,7 +41,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 
 - **Idioma**: trieu l'idioma que preferiu, serà l'idioma dels missatges del sistema, tot i que els arxius de configuració i els missatges d'error de la majoria dels serveis estaran en anglès.
 - **Distribució del teclat**: trieu la distribució coherent amb el vostre teclat. Si heu seleccionat "Català" com a idioma, el sistema us proposarà la distribució de teclat "Spanisth-Catalan".
-- **Tipus d'instal·lació**: trieu "Ubuntu Server". L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar aquestes eines manualment després de la instal·lació.
+- **Tipus d'instal·lació**: **trieu "Ubuntu Server" no la minimized**. L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar aquestes eines manualment després de la instal·lació.
 - **Network configuration**: amb la tria inicial les dues interfícies haurien de mostrar una IP automàtica assignada pel servidor DHCP de VirtualBox.
 - **Configuració del disc**: trieu "Use an entire disk" i les opcions marcades per defecte. Un cop aparegui la pantalla de confirmació, feu clic a "Continua".
 - **Perfil usuari inicial i màquina**: useu com a nom d'usuari "usuari", com a nom de servidor "server" i com a contrasenya "usuari".
