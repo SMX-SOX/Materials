@@ -41,7 +41,7 @@ En diverses activitats usarem el model de "xarxa NAT", el qual permetrà crear u
 
 - **Idioma**: trieu l'idioma que preferiu, serà l'idioma dels missatges del sistema, tot i que els arxius de configuració i els missatges d'error de la majoria dels serveis estaran en anglès.
 - **Distribució del teclat**: trieu la distribució coherent amb el vostre teclat. Si heu seleccionat "Català" com a idioma, el sistema us proposarà la distribució de teclat "Spanisth-Catalan".
-- **Tipus d'instal·lació**: **trieu "Ubuntu Server" no la minimized**. L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar aquestes eines manualment després de la instal·lació.
+- **Tipus d'instal·lació**: **trieu "Ubuntu Server" no marqueu l'opció minimized**. L'opció "minimized" tot i que redueix la mida de la instal·lació, no inclou eines que seran útils per a la gestió del sistema. Cas que vulgueu fer una instal·lació mínima, haureu d'instal·lar les eines que necessiteu manualment després de la instal·lació.
 - **Network configuration**: amb la tria inicial les dues interfícies haurien de mostrar una IP automàtica assignada pel servidor DHCP de VirtualBox.
 - **Configuració del disc**: trieu "Use an entire disk" i les opcions marcades per defecte. Un cop aparegui la pantalla de confirmació, feu clic a "Continua".
 - **Perfil usuari inicial i màquina**: useu com a nom d'usuari "usuari", com a nom de servidor "server" i com a contrasenya "usuari".
@@ -80,3 +80,29 @@ Ara cal comprovar la configuració de xarxa fent `ip a`. Com hem de tenir dues i
     inet6 fe80::a00:27ff:fec4:d819/64 scope link proto kernel_ll
        valid_lft forever preferred_lft forever
 ```
+
+## ⚠️ Sobre la instal·lació mínima (minimized installation)
+
+La versió minimitzada d'Ubuntu Server és una edició dissenyada específicament per a entorns automatitzats, on s'eliminen els paquets d'ús interactiu humà per reduir el consum de recursos i la superfície d'atac. És a dir, no és una instal·lació pensada per entrar habitualment amb un terminal i executar comandes.
+
+El seu principal avantatge és l'eficiència en l'ús de recursos. Segons anàlisis de [All Things How](https://allthings.how/minimize-resource-usage-with-ubuntus-minimal-install/) i la documentació oficial de Canonical, la versió minimitzada permet reduir al voltant d'un 19% el consum de memòria RAM en repòs i un 14% l'espai en disc respecte a la instal·lació estàndard. Les imatges dissenyades específicament per a ús al núvol ocupen menys de 500 MB descomprimides.
+
+I per a què s'utilitza? Normalment a instàncies al núvol (AWS, GCP, Azure, Oracle Cloud) que executen un servei o aplicació específica, imatges base de contenidors (Docker, LXD), dispositius IoT i nodes automatitzats que s'usen pel desplegament d'aplicacions i serveis de forma automatitzada.
+
+Òbviament, aquesta optimització té un cost: s'eliminen les pàgines de manual (`man`), els editors interactivs com `nano` o `vim`, les utilitats de diagnòstic de xarxa (`net-tools`, `curl`, `ping`), així com els fitxers de traduccions i locales. De tota manera, es poden instal·lar manualment els paquets necessaris executant comandes com `sudo apt install nano` o `sudo apt install net-tools`.
+
+I és irreversible? Doncs no, la utilitat `unminimize` permet "rehidratar" (analogia usada per Canonical per descriure el procés) el sistema, tornant a instal·lar la documentació, utilitats interactives i paquets per defecte per convertir la instal·lació en un Ubuntu Server estàndard. Si l'eina no està disponible, es pot instal·lar amb `sudo apt install unminimize`. A continuació, es recomana instal·lar el metapaquet `ubuntu-server` amb `sudo apt install ubuntu-server`, que inclou els paquets bàsics d'Ubuntu Server. Aquí teniu la seqüència de comandes per fer-ho:
+
+```bash
+sudo su # elevem privilegis per treballar com a root
+apt update
+apt install unminimize -y
+yes | unminimize # Això automatitza totes les respostes a yes.
+apt install ubuntu-server -y
+apt upgrade -y # actualitzem tots els paquets a la darrera versió disponible
+apt autoremove -y # eliminem paquets que ja no són necessaris
+apt clean # esborrem la cache d'APT per alliberar espai en disc
+exit # sortim de l'usuari root i tornem a l'usuari normal
+```
+
+Un cop acabat el procés, és recomanable reiniciar la màquina virtual amb `sudo reboot` per assegurar que tots els serveis s'inicien correctament amb la nova configuració.
