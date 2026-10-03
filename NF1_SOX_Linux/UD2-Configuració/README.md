@@ -231,7 +231,9 @@ network:
   version: 2
 ```
 
-Un detall molt important a tenir en compte és que els fitxers YAML són molt sensibles a la **indentació** (alineació) i que cal usar **espais** en lloc de tabuladors.
+Un detall molt important a tenir en compte és que els fitxers YAML són molt sensibles a la **indentació** (alineació) i que cal usar **espais** en lloc de tabuladors. Per fortuna, les versions actuals de nano, permeten ja tenen aquesta configuració, a la carpeta `/usr/share/nano/` hi ha un fitxer anomenat `yaml.nanorc` que activa la sintaxi YAML i l'indentació automàtica, canviant el comportament del tabulador per inserir dos espais en lloc de tabuladors.
+
+Si treballeu amb una versió de nano més antiga, una opció és força aquest canvi al moment d'editar obrint l'arxiu amb l'opció `nano -ET 4 nomdelarxiu.yaml`, que farà que el tabulador insereixi 4 espais en lloc de tabuladors. En qualsevol cas, una bona pràctica és comprovar que no hi ha tabuladors al fitxer fent l'opció `ESC + p`a dins l'editor, que mostrarà els caràcters especials (· per espai i → per tabulador).
 
 Per aplicar els canvis, cal executar la comanda `sudo netplan apply`, que llegirà els fitxers de configuració i aplicarà la nova configuració de xarxa al sistema. Si hi ha algun error en la sintaxi del fitxer YAML, Netplan mostrarà un missatge d'error i no aplicarà els canvis fins que es corregeixi el problema.
 
