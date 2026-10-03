@@ -76,7 +76,25 @@ A Servers podem veure els serveis que tenim instal·lats i el seu estat. Per exe
 
 A l'opció de 'Un-used modules' podem veure els mòduls disponibles per ser instal·lats, per exemple, el d'Apache o els que ja estan instal·lats però no s'utilitzen perquè el servei no està instal·lat.
 
-### Solucions de gestió de múltiples servidors
+## Shells alternatius
+
+Tot i que `bash` des de fa temps ha estat el shell per defecte a la majoria de distribucions Linux, va aparèixer com a millora de la inicial `sh`, hi ha altres shells que ofereixen característiques addicionals i poden ser més adequats segons les necessitats de l'usuari. Alguns exemples són:
+
+- **Zsh**: És un shell molt potent i flexible que ofereix moltes característiques avançades, com ara autocompletat intel·ligent, historial de comandes millorada, suport per a temes i plugins, entre altres. És molt popular entre els desenvolupadors i administradors de sistemes. Es pot trobar a Kali Linux i macOS, per exemple. Per instal·lar-lo a Ubuntu i definir-lo com a shell per defecte, podeu utilitzar la comanda:
+
+   ```bash
+   sudo apt install zsh
+   sudo chsh -s $(which zsh)
+   ```
+
+- **Fish**: És un shell modern i amigable que ofereix una experiència d'usuari millorada amb autocompletat automàtic, suggeriments de comandes i una sintaxi més clara. És molt fàcil d'utilitzar i configurar, i és ideal per a usuaris que busquen una experiència de línia de comandes més agradable. A més, té una sintaxi més clara per desenvolupar scripts. Té com inconvenient que no és **estàndard POSIX**, el que vol dir que no garantitza la compatibilitat amb scripts d'altres shells. Per usar-lo a Ubuntu, podeu utilitzar la comanda:
+
+   ```bash
+   sudo apt install fish
+   sudo chsh -s $(which fish)
+   ```
+
+## Solucions de gestió de múltiples servidors
 
 Si tenim un conjunt de servidors heterogenis, amb diferents distribucions Linux i versions, pot ser interessant utilitzar una eina de gestió centralitzada que ens permeti administrar tots els servidors des d'una única interfície. Algunes opcions són:
 
@@ -180,12 +198,20 @@ sudo logwatch --range Today --detail Low
  --------------------- Disk Space Begin ------------------------ 
  /dev/sda1             20G   14G   6.0G  70% /
  ---------------------- Disk Space End ------------------------- 
-````
+```
 
 ## Enllaços d'interès
 
 - [Pàgina projecte Cockpit](https://cockpit-project.org/)
+
 - [Pàgina projecte Webmin](https://www.webmin.com/)
+
+- [ZSH: The Z Shell](https://zsh.sourceforge.io/)
+
+- [Fish: A friendly interactive shell](https://fishshell.com/)
+
 - [IT-Consulting:Gestión de la Configuración: Ansible, Puppet y Chef para Infraestructura, Servidores y Cloud](https://it-consulting.es/gestion-de-la-configuracion-ansible-puppet-y-chef-para-infraestructura-servidores-y-cloud/)
+
 - [Zenarmor: Linux Server Monitoring, Logs and Tools](https://www.zenarmor.com/docs/linux-tutorials/linux-server-monitoring-logs-and-tools)
+
 - [Linuxconfig.org: Using Logwatch for Basic Security Monitoring on Linux](https://linuxconfig.org/using-logwatch-for-basic-security-monitoring-on-linux)

@@ -8,7 +8,7 @@ Un cop tenim el nostre servidor Ubuntu Server instal·lat, el primer que caldrà
 
 >Previ a treballar aquesta activitat, és important que feu un repàs de les comandes bàsiques de terminal que vau estudiar el curs passat, ja que seran imprescindibles per a la gestió del sistema. En especial, cal que tingueu clar com moure-us pel sistema de fitxers, mostrar el contingut de carpetes, com crear i eliminar fitxers i directoris, com copiar i moure fitxers, com veure el contingut d'un fitxer i com editar-lo amb editors de text com `nano`. També és important que tingueu clar com utilitzar les comandes `sudo` i `su` per executar ordres amb privilegis d'administrador.
 >
->Aquí teniu un enllaç al llibre online [The Linux Command Line](https://linuxcommand.org/tlcl.php) que us pot ajudar a repassar. **Dediqueu temps a casa a repassar les comandes, ja que són la base per a poder administrar un sistema GNU/Linux.**
+>A la secció de recursos teniu un enllaç al llibre online "The Linux Command Line" que us pot ajudar a repassar. **Dediqueu temps a casa a repassar les comandes, ja que són la base per a poder administrar un sistema GNU/Linux.**
 
 ## Instal·lació d'aplicacions i actualització del sistema
 
@@ -253,6 +253,8 @@ Als sistemes GNU/Linux, les configuracions solen fer a través de fitxers de tex
 A més, quan instal·lem serveis addicionals, aquests solen crear els seus propis fitxers de configuració dins del directori `/etc/`, amb el nom del servei o aplicació. Per exemple, si instal·lem el servidor web Apache, es crearan fitxers de configuració dins del directori `/etc/apache2/`.
 
 ## Enllaços d'interès
+
+- [The Linux Command Line](https://linuxcommand.org/tlcl.php)
 
 - [The Linux Journey](https://labex.io/linuxjourney)
 
