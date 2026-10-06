@@ -50,7 +50,7 @@ A l'arxiu `crear_usuari_fish.sh` podeu veure la versió de l'script en aquest sh
 
 Tot i que els shells han anat guanyant funcionalitats, hi ha altres llenguatges de programació que permeten desenvolupar scripts més complexos i amb més funcionalitats. Alguns exemples són:
 
-- **Python**: Durant molt de temps, Python ha estat un llenguatge de programació molt popular per a l'automatització de tasques i la creació d'scripts. És un llenguatge interpretat, amb una sintaxi clara i llegible, i ofereix una gran quantitat de biblioteques i mòduls que faciliten la realització de tasques complexes. A més, és multiplataforma i es pot utilitzar en diferents sistemes operatius.
+- **Python**: Durant molt de temps, Python ha estat un llenguatge de programació molt popular per a l'automatització de tasques i la creació d'scripts. És un llenguatge interpretat, amb una sintaxi clara i llegible, i ofereix una gran quantitat de biblioteques i mòduls que faciliten la realització de tasques complexes. De tota manera és més útil per tasques com gestionar fitxers, processar dades que no pas interactuar directament amb les comandes del sistema.
 
 - **Rust**: Rust és un llenguatge de programació de sistemes que ofereix seguretat de memòria i concurrència sense comprometre el rendiment. Tot i que no és tan popular com Python per a l'automatització, Rust està guanyant popularitat per a la creació d'scripts i eines de línia de comandes gràcies a la seva eficiència i seguretat. Permet obtenir scripts que s'executen més ràpidament que els seus equivalents en Python.
 
