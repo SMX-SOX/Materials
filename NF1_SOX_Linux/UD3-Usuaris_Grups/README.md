@@ -331,6 +331,8 @@ Per afegir rutes de programari al PATH de tots els usuaris, podem editar l'arxiu
 export PATH=$PATH:/ruta/al/teu/programari
 ```
 
+> :information_source: Afegir rutes al PATH és útil quan instal·lem programari en ubicacions no estàndard, com ara `/opt` o `/usr/local/bin`. Això permet que els usuaris puguin executar el programari sense haver d'especificar la ruta completa.
+
 ## Inicis de sessió i tancaments de sessió
 
 Quant un usuari inicia sessió al sistema, es carreguen els fitxers de configuració del seu perfil d'usuari, com ara `.bashrc`, `.profile` i altres fitxers ocults. Aquests fitxers defineixen l'entorn de treball i les configuracions específiques per a aquest usuari.
