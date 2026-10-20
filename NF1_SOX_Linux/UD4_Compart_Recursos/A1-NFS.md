@@ -34,7 +34,7 @@ Les opcions més utilitzades es classifiquen segons la seva funció:
     - ro (Read-Only): Atorga accés de només lectura (és l'opció predeterminada).
 
 2. **Rendiment vs. Seguretat de dades**
-    - sync: Força el servidor a esperar que els canvis s'escriguin al disc físic abes de respondre al client. Garanteix la integritat de les dades en cas de caigudes sobtades del servidor.
+    - sync: Força el servidor a esperar que els canvis s'escriguin al disc físic abans de respondre al client. Garanteix la integritat de les dades en cas de caigudes sobtades del servidor.
     - async: Permet al servidor respondre a les sol·licituds abans que els canvis s'escriguin a l'emmagatzematge estable. Millora el rendiment, però augmenta el risc de pèrdua de dades si hi ha fallades inesperades.
 
 3. **Mapeig d'Usuaris (User Squashing)**
