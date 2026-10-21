@@ -199,7 +199,7 @@ sudo chmod 750 /srv/nfs/compartit
 Editem l'arxiu `/etc/exports` per definir els recursos compartits i els permisos d'accés:
 
 ```plain
-/srv/nfs/basica *(rw,sync,no_subtree_check)
+/srv/nfs/compartit *(rw,sync,no_subtree_check)
 ```
 
 Apliquem els canvis i reiniciem el servei NFS:
